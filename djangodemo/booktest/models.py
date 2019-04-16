@@ -11,6 +11,9 @@ class User(models.Model):
     addr = models.CharField(max_length=30)
     register_time = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Goods(models.Model):
     """
@@ -18,6 +21,9 @@ class Goods(models.Model):
     """
     name = models.CharField(max_length=20)
     price = models.FloatField()
+
+    def __str__(self):
+        return self.name
 
 
 class Orders(models.Model):
@@ -27,3 +33,7 @@ class Orders(models.Model):
     user_id = models.ForeignKey('User', on_delete=models.CASCADE)
     goods_id = models.ForeignKey('Goods', on_delete=models.CASCADE)
     num = models.IntegerField()
+
+    def __str__(self):
+        return self.user_id.name + ':' + self.goods_id.name
+

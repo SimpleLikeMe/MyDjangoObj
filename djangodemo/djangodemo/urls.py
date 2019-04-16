@@ -20,6 +20,7 @@ from django.conf.urls import include,url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # 将应用booktest中的urls加入项目中
     url(r'^', include('booktest.urls')),
 ]
 
