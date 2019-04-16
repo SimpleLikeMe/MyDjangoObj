@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'booktest',
 ]
 
 MIDDLEWARE = [
@@ -74,10 +75,23 @@ WSGI_APPLICATION = 'djangodemo.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
+
+    # sqllite3数据库配置
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+
+    # mysql数据库配置
+    # 'default': {
+    # 'ENGINE': 'django.db.backends.mysql',
+    # 'NAME': 'goods2',
+    # 'USER': 'root',
+    # 'PASSWORD': 'SimpleID450326',
+    # 'HOST': '127.0.0.1',
+    # 'PORT': '3306',
+    # }
+
 }
 
 
