@@ -19,6 +19,7 @@ class Goods(models.Model):
     name = models.CharField(max_length=20)
     price = models.FloatField()
 
+
 class Orders(models.Model):
     """
     创建订单类
