@@ -2,12 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>图书列表界面</title>
+    <title>商品列表</title>
 </head>
 <body>
-    <h1>图书列表页</h1>
+    <h1>商品列表</h1>
     <ul>
-
+        {% for book in booklist %}
+        <li>
+            <span style="display: inline-block; width: 200px; ">{{book}}</span>
+            <span style="display: inline-block; width: 200px">{{book.price}}元</span>
+            <a href="/detail/{{book.id}}">详情</a>
+        </li>
+        {% endfor %}
     </ul>
+
 </body>
 </html>

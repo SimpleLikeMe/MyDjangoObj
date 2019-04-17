@@ -7,20 +7,29 @@ from .models import *
 
 
 def index(request):
+    print(request)
     # 加载模板
-    # template = loader.get_template("templates/index.html")
+    template = loader.get_template("index.html")
     # 构造上下文
     content = {}
     # 渲染模板
-    # result = template.render(context=None)
+    result = template.render(context=content)
     # 将模板发送至浏览器
-    # return HttpResponse(result)
-    return HttpResponse("index")
+    return HttpResponse(result)
+    # return HttpResponse("show index")
 
 
 def detail(request, id):
     return HttpResponse("detail %s" % (id,))
 
 
-def book_list(request, id):
-    return HttpResponse("detail %s" % (id,))
+def book_list(request):
+    # 加载模板
+    template = loader.get_template('list.html')
+    booklist = Goods.objects.all()
+    # 构造上下文
+    context = {"booklist": booklist}
+    # 渲染模板
+    result = template.render(context=context)
+    return HttpResponse(result)
+    # return HttpResponse("list" )
