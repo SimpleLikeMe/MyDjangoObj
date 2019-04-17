@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
 
+url(r'^', include('booktest.urls', namespace='booktest')),
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 将应用booktest中的urls加入项目中
     url(r'^', include('booktest.urls')),
 ]
+
 

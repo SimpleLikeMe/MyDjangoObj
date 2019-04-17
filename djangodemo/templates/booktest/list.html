@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+</head>
+<body>
+    <h1>商品列表</h1>
+    <ul>
+        {% for book in booklist %}
+        <li>
+            <!--<a href="/detail/{{book.id}}"><span style="display: inline-block; width: 200px; height: 40px; font-size: 20px; ">{{book}}</span></a>-->
+            <a href="{% url 'booktest:detail' book.id %}"><span style="display: inline-block; width: 200px; height: 40px; font-size: 20px; ">{{book}}</span></a>
+            <span style="display: inline-block; width: 200px">{{book.price}}元</span>
+            <!--<a href="{% url 'booktest:detail' book.id %}">详情</a>-->
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
