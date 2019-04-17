@@ -14,6 +14,11 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+    def skill(self):
+        return self.name
+
+    skill.short_description = '姓名'
+
 
 class Goods(models.Model):
     """
