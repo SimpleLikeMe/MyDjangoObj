@@ -23,6 +23,9 @@ class User(models.Model):
     # 注册时间
     register_time = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.account
+
 
 class Article(models.Model):
     """
@@ -33,6 +36,9 @@ class Article(models.Model):
     user = models.ForeignKey("User", on_delete=models.CASCADE)
     read_count = models.IntegerField(default=0)
     publish_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
 
 
 
