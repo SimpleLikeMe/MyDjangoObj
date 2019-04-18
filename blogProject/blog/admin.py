@@ -6,7 +6,7 @@ from .models import *
 class UserAdmin(admin.ModelAdmin):
     """创建用户表管理类"""
     # 显示的列的列表
-    list_display = ['account', 'nickname', 'email', 'integral', 'register_time']
+    list_display = ['show_account', 'show_nickname', 'show_email', 'show_integral', 'show_register_time']
     # 添加过滤项
     list_filter = ['account', 'email', 'integral', 'register_time']
     # 添加搜索框，支持模糊查询
@@ -18,7 +18,7 @@ class UserAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     """创建用户表管理类"""
     # 显示的列的列表
-    list_display = ['id', 'title', 'read_count', 'publish_time']
+    list_display = ['id', 'show_title', 'show_read_count', 'show_publish_time']
     # 添加过滤项
     list_filter = ['id', 'title', 'read_count', 'publish_time']
     # 添加搜索框，支持模糊查询

@@ -26,6 +26,26 @@ class User(models.Model):
     def __str__(self):
         return self.account
 
+    def show_account(self):
+        return self.account
+    show_account.short_description = "账号"
+
+    def show_nickname(self):
+        return self.nickname
+    show_nickname.short_description = "昵称"
+
+    def show_email(self):
+        return self.email
+    show_email.short_description = "邮箱"
+
+    def show_integral(self):
+        return self.integral
+    show_integral.short_description = "积分"
+
+    def show_register_time(self):
+        return self.register_time
+    show_register_time.short_description = "注册时间"
+
 
 class Article(models.Model):
     """
@@ -36,6 +56,22 @@ class Article(models.Model):
     user = models.ForeignKey("User", on_delete=models.CASCADE)
     read_count = models.IntegerField(default=0)
     publish_time = models.DateTimeField(auto_now_add=True)
+
+    def show_title(self):
+        return self.title
+    show_title.short_description = "标题"
+
+    # def show_id(self):
+    #     return self.id
+    # show_id.short_description = "邮箱"
+
+    def show_read_count(self):
+        return self.read_count
+    show_read_count.short_description = "浏览次数"
+
+    def show_publish_time(self):
+        return self.publish_time
+    show_publish_time.short_description = "发布时间"
 
     def __str__(self):
         return self.title
