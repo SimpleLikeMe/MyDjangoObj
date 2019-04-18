@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+
+</head>
+<body>
+    <div id="user" class="user" style="height: 1500px;width: 800px; background-color: cadetblue;margin: auto;">
+        {% for user in user_set %}
+            <li>
+            {% for info in user %}
+
+            <a style="display: inline-block; width: 150px; height: 50px; text-align: center; border: 1px solid #431232;
+             line-height: 50px"> {{ info }} </a>
+            {% endfor %}
+            </li>
+        {% endfor %}
+        <div>
+            <a href="/news/{{page+1}}">下一页</a>
+            {% if page > 1 %}
+                <a href="/news/{{page-1}}">上一页</a>
+            {% else %}
+                <a href="/news/{{page}}">上一页</a>
+            {% endif %}
+            <a href="/">返回主页</a>
+        </div>
+    </div>
+
+</body>
+</html>

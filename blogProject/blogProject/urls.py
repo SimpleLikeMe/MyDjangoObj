@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include, url
+
+
+# 为新建的项目下的url注册
+# url(r'^', include('blog.urls', namespace='blog'))
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url('^', include('blog.urls', namespace="blog")),
 ]

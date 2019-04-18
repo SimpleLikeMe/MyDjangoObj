@@ -22,6 +22,8 @@ class User(models.Model):
     describe = models.CharField(max_length=255, blank=True, default="暂无说明")
     # 注册时间
     register_time = models.DateTimeField(auto_now_add=True)
+    # 是否激活
+    # is_Delete = models.BooleanField()
 
     def __str__(self):
         return self.account

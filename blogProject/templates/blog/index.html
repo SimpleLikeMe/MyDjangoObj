@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户</title>
+    <link rel="stylesheet" href="/static/blog/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="/static/blog/js/lib/jquery-2.1.4/jquery-2.1.4.js" ></script>
+    <script src="/static/blog/js/lib/bootstrap-3.3.7-dist/js/bootstrap.js" ></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">简书</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>首页<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-download-alt"></span> 下载APP</a></li>
+                </ul>
+
+                <form class="navbar-form navbar-left">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="搜索">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">搜索</button>
+                        </span>
+                    </div>
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'blog:login_register' %}">登录</a></li>
+                    <li><a href="{% url 'blog:login_register' %}">注册</a></li>
+                    <li><a href="#">写博客</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="jumbotron" >
+                    <h1>编程改变世界</h1>
+                    <p>python、Java、C#</p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">开启编程之旅</a></p>
+                </div>
+                
+                <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading"> <h3>微信聊天的三大禁忌，看看你有没有中招</h3></div>
+                        <div class="panel-body">
+                          <p>微信已经成为我们社交不可或缺的工具，如果有人说他没有微信，你一定会怀疑他是不是地球人。但是，微信大家都会用，可是你真的会聊天吗？ 如果你经常使用...</p>
+                        </div>
+                      
+                        <!-- List group -->
+                        <ul class="list-group">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                        </ul>
+                      </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-success">今日推荐</a>
+                        <div>
+                            <a href="#">今日推荐内容</a><br>
+                            <a href="#">大热点</a> 
+                        </div>
+                    <a href="#" class="list-group-item list-group-item-info">热门搜索</a>
+                        <div>
+                            <a href="#">热门搜索内容</a><br>
+                            <a href="#">python又火了</a> 
+                        </div>
+                    <a href="#" class="list-group-item list-group-item-warning">大家都在看</a>
+                        <div>
+                            <a href="#">python学习指南</a>
+                            <br><a href="#">java大师之路</a> 
+                        </div>
+                    <a href="#" class="list-group-item list-group-item-danger">作者推荐</a>
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <a href="#">
+                            <img class="media-object img-circle" src="static/blog/images/head/ss.jpeg" alt="头像" style="width: 64px;">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">simple</h4>
+                            老男孩系统讲解Web集群所涉及的各种技术，针对整个集群中的每个网络服务节点给出解决方案，
+                        </div>
+                    </div>
+
+                    <div class="media">
+                        <div class="media-left media-middle">
+                            <a href="#">
+                            <img class="media-object img-circle" src="static/blog/images/head/mm.jpeg" alt="头像" style="width: 64px;">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">tom</h4>
+                            Java 工程师掌握 Spring Boot 技术栈，实践微服务，针对整个集群中的每个网络服务节点给出解决方案，
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+    </div>
+
+
+</body>
+</html>
