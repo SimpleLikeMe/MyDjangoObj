@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>管理文章</title>
 
-    <link rel="stylesheet" href="../static/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <script src="../static/js/lib/jquery-2.1.4/jquery-2.1.4.js"></script>
-    <script src="../static/js/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/blog/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="/static/blog/js/lib/jquery-2.1.4/jquery-2.1.4.js"></script>
+    <script src="/static/blog/js/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 
 </head>
 <body style="background-color: cadetblue">
@@ -76,30 +76,32 @@
             </div>
 
             <div class="col-md-9">
-                {% if article_list %}
-                        {% for article in article_list %}
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3>{{article.title}}</h3></div>
-                                <div class="panel-body">
-                                    <p>{{article.content}}</p>
-                                    <div>
-                                        <div class="left" style="float: left">
-                                            <span>{{article.publish_time}}</span>
-                                            <a href="#">阅览数：{{article.read_count}}</a>
-                                            <a href="#">评论数:{{article.comment}}</a>
-                                        </div>
-                                        <div class="right" style="float: right">
-                                            <a href="/detail/{{article.id}}">查看</a>
-                                            <a href="/delete_article/{{article.id}}">删除</a>
 
-                                        </div>
-                                    </div>
-                                </div>
+				{% for article in articles %}
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3>{{article.title}}</h3></div>
+						<div class="panel-body">
+							<p>{{article.content}}</p>
+							<div>
+								<div class="left" style="float: left">
+									<span>{{article.publish_time}}</span>
+									<a href="#">阅览数：{{article.read_count}}</a>
+									<a href="#">评论数:{{article.comment}}</a>
+								</div>
+								<div class="right" style="float: right">
+									<a href="">查看</a>
+									<a href="/delete_article/{{article.id}}">删除</a>
 
-                            </div>
-                        {% endfor %}
-                    {% endif %}
+								</div>
+							</div>
+						</div>
+
+					</div>
+				{% empty %}
+					<span>当前没有任何文章</span>
+				{% endfor %}
+
             </div>
 
 

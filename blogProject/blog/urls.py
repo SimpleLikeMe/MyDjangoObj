@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^blog/login$', views.login, name="login"),
     url(r'^blog/register$', views.register, name="register"),
     url(r'^blog/home$', views.home, name="home"),
-    url(r'^blog/show_publish$', views.show_publish_article, name="show_publish"),
     url(r'^blog/publish$', views.publish_article, name="publish"),
+    url(r'^blog/manage_article$', views.manage_article, name="manage_article"),
+    url(r'^blog/update_article$', views.update_article, name="update_article"),
 ]

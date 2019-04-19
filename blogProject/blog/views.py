@@ -32,16 +32,17 @@ def login(request):
         return render(request, 'blog/login.html')
 
     elif request.method == "POST":
-        try:
-            account = request.POST["account"]
-            pwd = request.POST["password"]
-            user = User.objects.get(account=account)
-            if user.password == pwd:
-                articles = Article.objects.all()
-                return render(request, 'blog/home.html', context={"articles": articles})
-            else:
-                return HttpResponseRedirect('/blog/login')
-        except:
+        account = request.POST["account"]
+        pwd = request.POST["password"]
+        users = User.objects.all().filter(account=account)
+        if not users.exists():
+            return HttpResponseRedirect('/blog/login')
+
+        if users.first().password == pwd:
+            request.session['account'] = request.POST["account"]
+            return HttpResponseRedirect('/blog/home')
+
+        else:
             return HttpResponseRedirect('/blog/login')
 
 
@@ -58,11 +59,9 @@ def register(request):
     elif request.method == "POST":
         account = request.POST["account"]
         pwd = request.POST["password"]
-
-        try:
-            if User.objects.get(account=account):
-                return HttpResponseRedirect('/blog/register')
-        except:
+        if User.objects.all.filter(account=account):
+            return HttpResponseRedirect('/blog/register')
+        else:
             u = User()
             u.account = account
             u.password = pwd
@@ -76,15 +75,9 @@ def home(request):
     :param request: 请求对象
     :return: 注册页面html
     """
-    account = request.POST["account"]
-    pwd = request.POST["password"]
-    try:
-        if User.objects.get(account=account).password == pwd:
-            return render(request, 'blog/home.html')
-        else:
-            return HttpResponseRedirect('blog/login')
-    except:
-        return HttpResponseRedirect('blog/login')
+    account = request.session.get('account')
+    articles = Article.objects.all()
+    return render(request, 'blog/home.html', context={"articles": articles, "account": account})
 
 
 def show_publish_article(request):
@@ -102,17 +95,38 @@ def publish_article(request):
     :param request:请求的对象
     :return:返回写博客页面
     """
-    print("发表文章")
-    title = request.POST["title"]
-    content = request.POST["content"]
-    article = Article()
-    article.title = title
-    article.content = content
-    article.save()
-    articles = Article.objects.all()
+    if request.method == "GET":
+        return render(request, "blog/publish.html")
+    elif request.method == "POST":
+        account = request.session.get('account')
+        user = User.objects.all().filter(account=account).first()
+        title = request.POST["title"]
+        content = request.POST["content"]
+        article = Article()
+        article.title = title
+        article.content = content
+        article.user = user
+        article.save()
+        articles = Article.objects.all()
+        return HttpResponseRedirect("/blog/home")
 
-    return render(request, "blog/home.html", context={"articles": articles})
+
+def manage_article(request):
+    """
+    管理文章处理函数
+    :param request:请求的用户
+    :return: html网页
+    """
+    account = request.session.get('account')
+    articles = Article.objects.all().filter(account=account)
+    return render(request, "blog/manage_article.html", context={"articles": articles})
 
 
-
+def update_article(request):
+    """
+    修改文章
+    :param request:修改文章处理函数
+    :return: 修改后得html
+    """
+    return
 
