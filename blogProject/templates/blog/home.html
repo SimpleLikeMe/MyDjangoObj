@@ -180,14 +180,15 @@
 									</div>
 									<div class="right" style="float: right">
 										<a href="#">阅览数：{{article.read_count}}</a>
-										<a href="#">评论数:{}</a>
+
+										<a href="#">评论数:{{article.comment_set.all}}</a>
 									</div>
 								</div>
 							</div>
 
 						</div>
 					{% empty %}
-
+						<span></span>
 					{% endfor %}
 				</div>
 				<div class="col-md-3">

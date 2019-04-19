@@ -1,6 +1,6 @@
 let bt = document.getElementsByClassName("button");
 let div = document.getElementsByClassName("inner");
-div[0].style.height = "500px";
+
 for(let i = 0;i < bt.length;i++){
 	bt[i].onclick = function(){
 		// console.log(this)

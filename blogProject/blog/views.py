@@ -28,17 +28,21 @@ def login(request):
     :param request:
     :return:
     """
-    try:
-        account = request.POST["account"]
-        pwd = request.POST["password"]
-        user = User.objects.get(account=account)
-        if user.password == pwd:
-            articles = Article.objects.all()
-            return render(request, 'blog/home.html', context={"articles": articles})
-        else:
-            return render(request, 'blog/login.html')
-    except:
+    if request.method == "GET":
         return render(request, 'blog/login.html')
+
+    elif request.method == "POST":
+        try:
+            account = request.POST["account"]
+            pwd = request.POST["password"]
+            user = User.objects.get(account=account)
+            if user.password == pwd:
+                articles = Article.objects.all()
+                return render(request, 'blog/home.html', context={"articles": articles})
+            else:
+                return HttpResponseRedirect('/blog/login')
+        except:
+            return HttpResponseRedirect('/blog/login')
 
 
 def register(request):
@@ -47,18 +51,23 @@ def register(request):
     :param request:
     :return:
     """
-    account = request.POST["account"]
-    pwd = request.POST["password"]
 
-    try:
-        if User.objects.get(account=account):
-            return render(request, 'blog/login.html')
-    except:
-        u = User()
-        u.account = account
-        u.password = pwd
-        u.save()
-        return render(request, 'blog/index.html')
+    if request.method == "GET":
+        return render(request, 'blog/login.html')
+
+    elif request.method == "POST":
+        account = request.POST["account"]
+        pwd = request.POST["password"]
+
+        try:
+            if User.objects.get(account=account):
+                return HttpResponseRedirect('/blog/register')
+        except:
+            u = User()
+            u.account = account
+            u.password = pwd
+            u.save()
+            return render(request, 'blog/index.html')
 
 
 def home(request):

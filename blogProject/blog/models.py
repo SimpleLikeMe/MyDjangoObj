@@ -23,7 +23,7 @@ class User(models.Model):
     # 注册时间
     register_time = models.DateTimeField(auto_now_add=True)
     # 是否激活
-    # is_Delete = models.BooleanField()
+    is_delete = models.BooleanField(default=False)
 
     def __str__(self):
         return self.account
@@ -53,19 +53,20 @@ class Article(models.Model):
     """
         构建文章对象
     """
+    # 标题
     title = models.CharField(max_length=30)
+    # 内容
     content = models.CharField(max_length=255)
+    # 所属用户
     user = models.ForeignKey("User", on_delete=models.CASCADE)
+    # 阅读次数
     read_count = models.IntegerField(default=0)
+    # 发布时间
     publish_time = models.DateTimeField(auto_now_add=True)
 
     def show_title(self):
         return self.title
     show_title.short_description = "标题"
-
-    # def show_id(self):
-    #     return self.id
-    # show_id.short_description = "邮箱"
 
     def show_read_count(self):
         return self.read_count
@@ -79,8 +80,29 @@ class Article(models.Model):
         return self.title
 
 
+class Comment(models.Model):
+    """定义评论类"""
+    # 评论人
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # 评论文章
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    # 评论内容
+    content = models.CharField(max_length=255)
+    # 评论时间
+    comment_time = models.DateTimeField(auto_now_add=True)
 
+    def show_user(self):
+        return self.user
 
+    def show_article(self):
+        return self.article
+
+    def show_comment_time(self):
+        return self.comment_time
+
+    show_user.short_description = "评论人"
+    show_article.short_description = "文章标题"
+    show_comment_time.short_description = "发布时间"
 
 
 
