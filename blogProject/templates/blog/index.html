@@ -34,7 +34,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'blog:login' %}">登录</a></li>
                     <li><a href="{% url 'blog:register' %}">注册</a></li>
-                    <li><a href="#">写博客</a></li>
+                    <li><a href="{% url 'blog:login' %}">写博客</a></li>
                 </ul>
             </div>
 
@@ -86,7 +86,7 @@
                     <div class="media">
                         <div class="media-left media-middle">
                             <a href="#">
-                            <img class="media-object img-circle" src="static/blog/images/head/ss.jpeg" alt="头像" style="width: 64px;">
+                            <img class="media-object img-circle" src="/static/blog/images/head/ss.jpeg" alt="头像" style="width: 64px;">
                             </a>
                         </div>
                         <div class="media-body">
@@ -98,7 +98,7 @@
                     <div class="media">
                         <div class="media-left media-middle">
                             <a href="#">
-                            <img class="media-object img-circle" src="static/blog/images/head/mm.jpeg" alt="头像" style="width: 64px;">
+                            <img class="media-object img-circle" src="/static/blog/images/head/mm.jpeg" alt="头像" style="width: 64px;">
                             </a>
                         </div>
                         <div class="media-body">

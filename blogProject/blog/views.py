@@ -59,7 +59,7 @@ def register(request):
     elif request.method == "POST":
         account = request.POST["account"]
         pwd = request.POST["password"]
-        if User.objects.all.filter(account=account):
+        if User.objects.all().filter(account=account):
             return HttpResponseRedirect('/blog/register')
         else:
             u = User()

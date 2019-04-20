@@ -16,7 +16,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active">
-							<a href="/user_home"><span class="glyphicon glyphicon-home"></span>首页<span class="sr-only">(current)</span></a>
+							<a href="{% url 'blog:home' %}"><span class="glyphicon glyphicon-home"></span>首页<span class="sr-only">(current)</span></a>
 						</li>
 						<li>
 							<a href="#"><span class="glyphicon glyphicon-tag"></span> 博客</a>
@@ -69,7 +69,7 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="list-group">
-                  <a href="#" class="list-group-item list-group-item-success">查看主页</a>
+                  <a href="{% url 'blog:home' %}" class="list-group-item list-group-item-success">查看主页</a>
                   <a href="{% url 'blog:manage_article' %}" class="list-group-item list-group-item-info">博客管理</a>
                   <a href="#" class="list-group-item list-group-item-warning">评论管理</a>
                   <a href="#" class="list-group-item list-group-item-danger">个人分类管理</a>
