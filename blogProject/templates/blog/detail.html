@@ -6,9 +6,9 @@
 
 
 
-    <link rel="stylesheet" href="../static/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <script src="../static/js/lib/jquery-2.1.4/jquery-2.1.4.js"></script>
-    <script src="../static/js/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/blog/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="/static/blog/js/lib/jquery-2.1.4/jquery-2.1.4.js"></script>
+    <script src="/static/blog/js/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 
 
 </head>
@@ -20,7 +20,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active">
-							<a href="/user_home"><span class="glyphicon glyphicon-home"></span>首页<span class="sr-only">(current)</span></a>
+							<a href="{% url 'blog:home' %}"><span class="glyphicon glyphicon-home"></span>首页<span class="sr-only">(current)</span></a>
 						</li>
 						<li>
 							<a href="#"><span class="glyphicon glyphicon-tag"></span> 博客</a>
@@ -71,7 +71,7 @@
 							<li><a href="#">账号设置</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="#">我的博客</a></li>
-							<li><a href="/manage_article">管理博客</a></li>
+							<li><a href="{% url 'blog:manage_article' %}">管理博客</a></li>
 							<li><a href="#">我的学院</a></li>
 							<li><a href="#">我的下载</a></li>
 							  <li role="separator" class="divider"></li>
@@ -97,17 +97,18 @@
             <div class="col-md-2"></div>
             <div class="col-md-8" style="border-bottom: 1px solid #777777">
                 <div style="border-bottom: 1px solid #777777; margin-bottom: 15px;"><h2>{{article.title}}</h2></div>
-					<div>{{article.content}}</div>
-					{% for comment in article.comment %}
+				<div>{{article.content}}</div>
+				{% for comment in article.comment_set.all %}
 					<div style="margin-top: 20px; margin-bottom: 20px">
-						<p><a href="">{{comment.user.name}}:</a> <span style="float: right">{{comment.comment_time}}</span></p>
+						<p><a href="">{{comment.user.nickname}}:</a> <span style="float: right">{{comment.comment_time}}</span></p>
 						<p>{{comment.content}}</p>
             	</div>
 
 				{%  endfor %}
             </div>
 			<div class="col-md-8 col-md-offset-2" style="margin-top: 15px">
-				<form action="/comment" method="get">
+				<form action="{% url 'blog:comment' %}" method="get">
+					<input type="hidden" name="aid" value={{article.id}} />
 					<textarea class="form-control" rows="3" name="comment"></textarea>
 					<button type="submit" class="btn btn-default" style="margin-top: 5px">评论</button>
 				</form>

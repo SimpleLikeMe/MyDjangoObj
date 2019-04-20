@@ -7,9 +7,9 @@
 <body>
     <div>
         <a href="/">系统首页</a>
-        <a href="/user_home">我的主页</a>
-        <a href="/register">返回注册</a>
-        <a href="/login">返回登录</a>
+        <a href="{% url 'blog:home' %}">我的主页</a>
+        <a href="{% url 'blog:register' %}">返回注册</a>
+        <a href="{% url 'blog:login' %}">返回登录</a>
     </div>
     <div>
         <form action="" method="post">

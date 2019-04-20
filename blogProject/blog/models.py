@@ -61,6 +61,8 @@ class Article(models.Model):
     user = models.ForeignKey("User", on_delete=models.CASCADE)
     # 阅读次数
     read_count = models.IntegerField(default=0)
+    # 评论数
+    comment_count = models.IntegerField(default=0)
     # 发布时间
     publish_time = models.DateTimeField(auto_now_add=True)
 

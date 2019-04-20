@@ -107,7 +107,6 @@ def publish_article(request):
         article.content = content
         article.user = user
         article.save()
-        articles = Article.objects.all()
         return HttpResponseRedirect("/blog/home")
 
 
@@ -118,8 +117,25 @@ def manage_article(request):
     :return: html网页
     """
     account = request.session.get('account')
-    articles = Article.objects.all().filter(account=account)
+    articles = User.objects.all().filter(account=account).first().article_set.all
     return render(request, "blog/manage_article.html", context={"articles": articles})
+
+
+def detail_article(request):
+    """
+    查看文章
+    :param request:
+    :return:
+    """
+    aid = request.GET["aid"]
+    articles = Article.objects.all().filter(pk=aid)
+    if articles.exists():
+        article = articles.first()
+        article.read_count += 1
+        article.save()
+        return render(request, "blog/detail.html", context={"article": article})
+    else:
+        return HttpResponseRedirect("/blog/home")
 
 
 def update_article(request):
@@ -130,3 +146,35 @@ def update_article(request):
     """
     return
 
+
+def del_article(request):
+    """
+    处理删除文章请求
+    :param request:
+    :return:
+    """
+    account = request.session.get("account")
+    aid = request.GET["aid"]
+    Article.objects.all().filter(pk=aid).delete()
+    articles = User.objects.all().filter(account=account).first().article_set.all
+    return render(request, "blog/manage_article.html", context={"articles": articles})
+
+
+def comment_article(request):
+    """
+    评论文章处理
+    :param request:
+    :return:
+    """
+    account = request.session.get("account")
+    aid = request.GET["aid"]
+    c = Comment()
+    c.user = User.objects.all().filter(account=account).first()
+    article = Article.objects.all().filter(pk=aid).first()
+    c.article = article
+    c.content = request.GET['comment']
+    c.save()
+    article.comment_count += 1
+    article.save()
+    # return HttpResponseRedirect("/blog/detail/?")
+    return render(request, "blog/detail.html", context={"article": article})

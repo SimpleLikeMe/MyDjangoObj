@@ -16,7 +16,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active">
-							<a href="/user_home"><span class="glyphicon glyphicon-home"></span>首页<span class="sr-only">(current)</span></a>
+							<a href="{% url 'blog:home' %}"><span class="glyphicon glyphicon-home"></span>首页<span class="sr-only">(current)</span></a>
 						</li>
 						<li>
 							<a href="#"><span class="glyphicon glyphicon-tag"></span> 博客</a>
@@ -87,11 +87,11 @@
 								<div class="left" style="float: left">
 									<span>{{article.publish_time}}</span>
 									<a href="#">阅览数：{{article.read_count}}</a>
-									<a href="#">评论数:{{article.comment}}</a>
+									<a href="#">评论数:{{article.comment_count}}</a>
 								</div>
 								<div class="right" style="float: right">
-									<a href="">查看</a>
-									<a href="/delete_article/{{article.id}}">删除</a>
+									<a href="{% url 'blog:detail'%}?aid={{article.id}}">查看</a>
+									<a href="{% url 'blog:delete'%}?aid={{article.id}}">删除</a>
 
 								</div>
 							</div>
