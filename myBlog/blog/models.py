@@ -3,6 +3,79 @@ from django.db import models
 # Create your models here.
 
 
+class UserManager(models.Manager):
+    """
+    用户管理类
+    """
+    def create_user(self, account, password):
+        user = self.model()
+        user.account = account
+        user.password = password
+        return user
+
+    def create_save_user(self, account, password):
+        user = self.create(account=account, password=password)
+        return user
+
+
+class ArticleManager(models.Manager):
+    """
+    文章管理类
+    """
+    def create_article(self, title, content):
+        article = self.model()
+        article.title = title
+        article.content = content
+        return article
+
+    def create_save_article(self, title, content):
+        article = self.create(title=title, content=content)
+        return article
+
+
+class CommentManager(models.Manager):
+    """
+    评论管理类类
+    """
+    def create_comment(self, user, article, content):
+        comment = self.model()
+        comment.user = user
+        comment.article = article
+        comment.content = content
+        return comment
+
+    def create_save_comment(self, user, article, content):
+        comment = self.create(user=user, article=article, content=content)
+        return comment
+
+
+class ArticleTagManager(models.Manager):
+    """
+    标签云管理类
+    """
+    def create_tag(self, name, article):
+        tag = self.model()
+        tag.name = name
+        tag.article = article
+        return tag
+
+    def create_save_tag(self, name, article):
+        return self.create(name=name, article=article)
+
+
+class ArticleKindManager(models.Manager):
+    """
+    文章管理类
+    """
+    def create_kind(self, name):
+        article_kind = self.model()
+        article_kind.name = name
+        return article_kind
+
+    def create_save_kind(self, name):
+        return self.create(name=name)
+
+
 class User(models.Model):
     """
         创建用户表，继承model下的Model类，该类提供了与数据库交互的所有方法
@@ -28,6 +101,8 @@ class User(models.Model):
     register_time = models.DateTimeField(auto_now_add=True)
     # 是否激活
     is_delete = models.BooleanField(default=False)
+    # 用户管理类
+    manager = UserManager()
 
     def __str__(self):
         return self.account
@@ -69,10 +144,13 @@ class Article(models.Model):
     publish_date = models.DateField(auto_now_add=True)
     # 发布时间
     publish_time = models.DateTimeField(auto_now_add=True)
+    # 修改
+    modified_time = models.DateTimeField(auto_now=True)
     # 所属用户
     user = models.ForeignKey("User", on_delete=models.CASCADE)
     # 类型
     kind = models.ForeignKey("ArticleKind", on_delete=models.CASCADE)
+    manager = ArticleKindManager()
 
     def show_title(self):
         return self.title
@@ -102,6 +180,7 @@ class Comment(models.Model):
     comment_time = models.DateTimeField(auto_now_add=True)
     # 网址
     addr = models.CharField(max_length=255)
+    manager = CommentManager()
 
     def show_user(self):
         return self.user
@@ -117,13 +196,14 @@ class Comment(models.Model):
     show_comment_time.short_description = "发布时间"
 
 
-class LabelCloud(models.Model):
+class ArticleTag(models.Model):
     # 标签名
     name = models.CharField(max_length=20)
     # 标签总数
     count = models.IntegerField(default=0)
     # 文章
     article = models.ManyToManyField(to="Article")
+    manager = ArticleTagManager()
 
     def __str__(self):
         return self.name
@@ -134,6 +214,7 @@ class ArticleKind(models.Model):
     name = models.CharField(max_length=20)
     # 该种类文章数量
     count = models.IntegerField(default=0)
+    manager = ArticleKindManager()
 
     def __str__(self):
         return self.name
