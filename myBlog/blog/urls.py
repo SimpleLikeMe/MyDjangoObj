@@ -4,6 +4,7 @@ from . import views
 # 设置应用命名空间
 app_name = 'blog'
 
+
 # 配置应用url
 urlpatterns = [
     url('^$', views.index, name='index'),

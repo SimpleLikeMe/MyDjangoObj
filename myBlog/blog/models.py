@@ -204,7 +204,7 @@ class ArticleTag(models.Model):
     # 标签总数
     count = models.IntegerField(default=0)
     # 文章
-    article = models.ManyToManyField(to="Article")
+    article = models.ManyToManyField(to="Article", null=True, blank=True)
     manager = ArticleTagManager()
 
     def __str__(self):
