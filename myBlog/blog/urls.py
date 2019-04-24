@@ -10,4 +10,10 @@ urlpatterns = [
     url('^$', views.index, name='index'),
     url('^login/$', views.login, name='login'),
     url('^(\d+)/$', views.index, name='index'),
+    url('^full_width/(\d+)/$', views.full_width, name='full_width'),
+    url('^single/(\d+)/$', views.single, name='single'),
+    url('^comment/(\d+)/$', views.comment, name='comment'),
+    url('^(\d+)/(\d+)/$', views.article_kind, name='article_kind'),
+    url('^(\d+)/(\d+)/$', views.article_tag, name='article_tag'),
+
 ]

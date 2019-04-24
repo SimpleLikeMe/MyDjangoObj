@@ -1,4 +1,5 @@
 from django import template
+from ..models import *
 
 # 得到django负责管理标签和过滤器类
 register = template.Library()
@@ -18,6 +19,13 @@ def mylower(value):
 def myjoin(value, sep):
     return value.join(sep)
 
+
 @register.simple_tag
-def getlatestposet():
-    pass
+def getArticleMonth():
+    return Article.manager.all().dates('publish_time', 'month', order='DESC')[:6]
+
+
+@register.simple_tag
+def getKindArticles(kind):
+    return Article.manager.all().filter(kind=kind)
+

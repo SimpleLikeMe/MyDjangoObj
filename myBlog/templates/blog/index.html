@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load extend_tag %}
 <html>
 <head>
     <title>Black &amp; White</title>
@@ -39,8 +40,8 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cl-effect-11"><a href="index.html" data-hover="首页">首页</a></li>
-                            <li class="cl-effect-11"><a href="full-width.html" data-hover="博客">博客</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blog:index' 1%}" data-hover="首页">首页</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blog:full_width' 1%}" data-hover="博客">博客</a></li>
                             <li class="cl-effect-11"><a href="about.html" data-hover="关于">关于</a></li>
                             <li class="cl-effect-11"><a href="contact.html" data-hover="联系">联系</a></li>
                         </ul>
@@ -70,7 +71,7 @@
                     <article class="post post-1">
                     <header class="entry-header">
                         <h1 class="entry-title">
-                            <a href="single.html">{{article.title}}</a>
+                            <a href="{% url 'blog:single' article.id%}">{{article.title}}</a>
                         </h1>
                         <div class="entry-meta">
                             <span class="post-category"><a href="#">{{article.kind}}</a></span>
@@ -84,7 +85,7 @@
                     <div class="entry-content clearfix">
                         <p>{{article.content}}</p>
                         <div class="read-more cl-effect-14">
-                            <a href="#" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+                            <a href="{% url 'blog:single' article.id %}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
                         </div>
                     </div>
                 </article>
@@ -110,7 +111,7 @@
                                 <li><a href="{% url 'blog:index' %}{{page}}">{{page}}</a></li>
                             {% endif %}
                         {% empty %}
-                            没有页面
+                            <li class="current"><a href="{% url 'blog:index' 1 %}">1</a></li>
                         {% endfor %}
                         <a href="#">下一页</a>
                     </ul>
@@ -123,7 +124,7 @@
                     <ul>
                         {% for article in new_articles %}
                             <li>
-                                <a href="#">{{article.title}}</a>
+                                <a href="{% url 'blog:single' article.id %}">{{article.title}}</a>
                             </li>
                         {% empty %}
                             最近没有文章
@@ -133,15 +134,14 @@
                 <div class="widget widget-archives">
                     <h3 class="widget-title">归档</h3>
                     <ul>
-                        <li>
-                            <a href="#">2017 年 5 月</a>
-                        </li>
-                        <li>
-                            <a href="#">2017 年 4 月</a>
-                        </li>
-                        <li>
-                            <a href="#">2017 年 3 月</a>
-                        </li>
+                        {% getArticleMonth as articleMonth %}
+                        {% for date in articleMonth %}
+                            <li>
+                                <a href="#">{{date.year}}年 {{date.month}}月</a>
+                            </li>
+                        {% empty %}
+                            没有文件
+                        {% endfor %}
                     </ul>
                 </div>
 
@@ -150,7 +150,7 @@
                     <ul>
                         {% for kind in kinds %}
                             <li>
-                                <a href="#">{{kind.name}} <span class="post-count">({{kind.count}})</span></a>
+                                <a href="{% url 'blog:article_kind' 1  kind.id %}">{{kind.name}} <span class="post-count">({{kind.count}})</span></a>
                             </li>
                         {% empty %}
                             没有分类
@@ -163,7 +163,7 @@
                     <ul>
                         {% for tag in tags %}
                             <li>
-                                <a href="#">{{tag.name}}</a>
+                                <a href="{% url 'blog:article_kind' 1  tag.id %}">{{tag.name}}</a>
                             </li>
                         {% empty %}
                             没有标签

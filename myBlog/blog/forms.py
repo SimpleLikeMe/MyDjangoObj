@@ -19,3 +19,15 @@ class UserForm(forms.ModelForm):
         widgets = {
             'password': forms.widgets.PasswordInput()
         }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = "__all__"
+        labels = {
+            'content': '评论：',
+        }
+        widgets = {
+            'password': forms.widgets.TextInput(attrs={'class': 'form-control', 'style': 'width:500px'})
+        }
