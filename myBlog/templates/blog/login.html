@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆界面</title>
+</head>
+<body>
+    <div class="login_form" style="width: 600px; margin: auto">
+        <h1>用户登陆</h1>
+        <form action="{% url 'blog:login' %}" method="post">
+            {% csrf_token %}
+            账号：<span style="display: inline-block; height: 40px">{{form.account}}</span> <br>
+            密码：<span style="display: inline-block; height: 40px">{{form.password}}</span> <br>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>

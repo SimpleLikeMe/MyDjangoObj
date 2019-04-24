@@ -134,6 +134,8 @@ class Article(models.Model):
     """
     # 标题
     title = models.CharField(max_length=30)
+    # 摘要
+    abstract = models.CharField(max_length=255)
     # 内容
     content = models.TextField()
     # 阅读次数
