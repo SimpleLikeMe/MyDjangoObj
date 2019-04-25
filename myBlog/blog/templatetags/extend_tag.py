@@ -15,10 +15,6 @@ def mylower(value):
     return value.lower()
 
 
-@register.filter(name="myjoin")
-def myjoin(value, sep):
-    return value.join(sep)
-
 
 @register.simple_tag
 def getArticleMonth():
@@ -26,6 +22,20 @@ def getArticleMonth():
 
 
 @register.simple_tag
-def getKindArticles(kind):
-    return Article.manager.all().filter(kind=kind)
+def getArticleKind():
+    return ArticleKind.manager.all()
+
+
+@register.simple_tag
+def getNewArticles():
+    articles = Article.manager.all()
+    if articles.count() <= 3:
+        return articles
+    else:
+        return articles[:3]
+
+
+@register.simple_tag
+def getArticleTag():
+    return ArticleTag.manager.all()
 

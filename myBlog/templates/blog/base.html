@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+{% load extend_tag %}
+<html>
+<head>
+    <title>Black &amp; White</title>
+
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/static/blog/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/blog/css/pace.css">
+    <link rel="stylesheet" href="/static/blog/css/custom.css">
+
+    <!-- js -->
+    <script src="/static/blog/js/jquery-2.1.3.min.js"></script>
+    <script src="/static/blog/js/bootstrap.min.js"></script>
+    <script src="/static/blog/js/pace.min.js"></script>
+    <script src="/static/blog/js/modernizr.custom.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <header id="site-header">
+        {% block header %}
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-8">
+                <div class="logo">
+                    <h1><a href="index.html"><b>Black</b> &amp; White</a></h1>
+                </div>
+            </div><!-- col-md-4 -->
+            <div class="col-md-8 col-sm-7 col-xs-4">
+                <nav class="main-nav" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" id="trigger-overlay" class="navbar-toggle">
+                            <span class="ion-navicon"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="cl-effect-11"><a href="{% url 'blog:index' 1%}" data-hover="首页">首页</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blog:full_width' 1%}" data-hover="博客">博客</a></li>
+                            <li class="cl-effect-11"><a href="about.html" data-hover="关于">关于</a></li>
+                            <li class="cl-effect-11"><a href="contact.html" data-hover="联系">联系</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+                <div id="header-search-box">
+                    <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
+                    <div id="search-form" class="search-form">
+                        <form role="search" method="get" id="searchform" action="#">
+                            <input type="search" placeholder="搜索" required>
+                            <button type="submit"><span class="ion-ios-search-strong"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- col-md-8 -->
+        </div>
+        {% endblock %}
+    </header>
+</div>
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/">网页模板</a></div>
+<div class="copyrights">Modified by <a href="http://zmrenwu.com/">追梦人物的博客</a></div>
+
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            {% block main %}
+            <main class="col-md-8">
+                {% for article in articles %}
+                    <article class="post post-1">
+                    <header class="entry-header">
+                        <h1 class="entry-title">
+                            <a href="{% url 'blog:single' article.id%}">{{article.title}}</a>
+                        </h1>
+                        <div class="entry-meta">
+                            <span class="post-category"><a href="#">{{article.kind}}</a></span>
+                            <span class="post-date"><a href="#"><time class="entry-date"
+                                                                      datetime="2012-11-09T23:15:57+00:00">{{article.publish_date}}</time></a></span>
+                            <span class="post-author"><a href="#">{{article.user.nickname}}</a></span>
+                            <span class="comments-link"><a href="#">{{article.comment_count}} 评论</a></span>
+                            <span class="views-count"><a href="#">{{article.read_count}} 阅读</a></span>
+                        </div>
+                    </header>
+                    <div class="entry-content clearfix">
+                        <p>{{article.content}}</p>
+                        <div class="read-more cl-effect-14">
+                            <a href="{% url 'blog:single' article.id %}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+                        </div>
+                    </div>
+                </article>
+                {% empty %}
+                    <div>当前没有任何文章</div>
+                {% endfor %}
+                <!-- 简单分页效果
+                <div class="pagination-simple">
+                    <a href="#">上一页</a>
+                    <span class="current">第 6 页 / 共 11 页</span>
+                    <a href="#">下一页</a>
+                </div>
+                -->
+
+                <div class="pagination">
+                    <ul>
+
+                        <a href="{% url 'blog:index' %} ">上一页</a>
+                        {% for page in pages %}
+                            {% if current_page == page %}
+                                <li class="current"><a href="{% url 'blog:index' %}{{page}}" >{{current_page}}</a></li>
+                            {% else %}
+                                <li><a href="{% url 'blog:index' %}{{page}}">{{page}}</a></li>
+                            {% endif %}
+                        {% empty %}
+                            <li class="current"><a href="{% url 'blog:index' 1 %}">1</a></li>
+                        {% endfor %}
+                        <a href="#">下一页</a>
+                    </ul>
+                </div>
+            </main>
+            {% endblock %}
+            <aside class="col-md-4">
+                <div class="widget widget-recent-posts">
+                    {% block newarticle %}
+                    <h3 class="widget-title">最新文章</h3>
+                    <ul>
+                        {% getNewArticles as newArticles %}
+                        {% for article in newArticles %}
+                            <li>
+                                <a href="{% url 'blog:single' article.id %}">{{article.title}}</a>
+                            </li>
+                        {% empty %}
+                            最近没有文章
+                        {% endfor %}
+                    </ul>
+                    {% endblock %}
+                </div>
+                <div class="widget widget-archives">
+                    {% block monthfile %}
+                    <h3 class="widget-title">归档</h3>
+                    <ul>
+                        {% getArticleMonth as articleMonth %}
+                        {% for date in articleMonth %}
+                            <li>
+                                <a href="#">{{date.year}}年 {{date.month}}月</a>
+                            </li>
+                        {% empty %}
+                            没有文件
+                        {% endfor %}
+                    </ul>
+                    {% endblock %}
+                </div>
+
+                <div class="widget widget-category">
+                    {% block kind %}
+                    <h3 class="widget-title">分类</h3>
+                    <ul>
+                        {% getArticleKind as articleKind %}
+                        {% for kind in articleKind %}
+                            <li>
+                                <a href="{% url 'blog:article_kind' 1  kind.id %}">{{kind.name}} <span class="post-count">({{kind.count}})</span></a>
+                            </li>
+                        {% empty %}
+                            没有分类
+                        {% endfor %}
+                    </ul>
+                    {% endblock %}
+                </div>
+
+                <div class="widget widget-tag-cloud">
+                    {% block tag %}
+                    <h3 class="widget-title">标签云</h3>
+                    <ul>
+                        {% getArticleTag as articleTag %}
+                        {% for tag in articleTag %}
+                            <li>
+                                <a href="{% url 'blog:article_kind' 1  tag.id %}">{{tag.name}}</a>
+                            </li>
+                        {% empty %}
+                            没有标签
+                        {% endfor %}
+                    </ul>
+                    {% endblock %}
+                </div>
+                <div class="rss">
+                    {% block RSS %}
+                    <a href=""><span class="ion-social-rss-outline"></span> RSS 订阅</a>
+                    {% endblock %}
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer id="site-footer">
+    {% block footer %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="copyright">&copy 2017 - 采集自<a href="http://www.cssmoban.com/"
+                                                        target="_blank" title="模板之家">模板之家</a>
+                    - 由<a href="http://zmrenwu.com/" title="网页模板" target="_blank">追梦人物的博客</a>修改
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</footer>
+
+<!-- Mobile Menu -->
+<div class="overlay overlay-hugeinc">
+    {% block menu %}
+    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="full-width.html">博客</a></li>
+            <li><a href="about.html">关于</a></li>
+            <li><a href="contact.html">联系</a></li>
+        </ul>
+    </nav>
+    {% endblock %}
+</div>
+
+<script src="/static/blog/js/script.js"></script>
+
+</body>
+</html>

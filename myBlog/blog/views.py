@@ -31,12 +31,9 @@ def index(request, page):
     page = int(page)
     # 获取所有文章
     count = Article.manager.all().count()
-    tags = ArticleTag.manager.all()
-    kinds = ArticleKind.manager.all()
-    new_articles = Article.manager.all().order_by('-publish_time')[:3]
     if count <= 3:
         articles = Article.manager.all()
-        return render(request, 'blog/index.html', context={'articles': articles, 'tags': tags, 'kinds': kinds, 'new_articles': new_articles})
+        return render(request, 'blog/index.html', context={'articles': articles})
     else:
         page_count = count//3 + 1
         if page > page_count:
@@ -44,10 +41,7 @@ def index(request, page):
         else:
             articles = Article.manager.all()[(page-1)*3:page*3]
             pages = [x+1 for x in range(page_count)]
-            a = ArticleTag.manager.all().first()
-
-            return render(request, 'blog/index.html', context={'articles': articles, 'tags': tags, 'kinds': kinds,
-                                                               'pages': pages, 'current_page': page, 'new_articles': new_articles})
+            return render(request, 'blog/index.html', context={'articles': articles, 'pages': pages, 'current_page': page})
 
 
 def full_width(request, page):
@@ -68,7 +62,6 @@ def full_width(request, page):
 
 
 def single(request, aid):
-    form = forms.CommentForm()
     tags = ArticleTag.manager.all()
     kinds = ArticleKind.manager.all()
     new_articles = Article.manager.all().order_by('-publish_time')[:3]
@@ -78,14 +71,13 @@ def single(request, aid):
         article.save()
 
         return render(request, 'blog/single.html', context={'article': article, 'tags': tags, 'kinds': kinds,
-                                                        'new_articles': new_articles, 'form': form})
+                                                            'new_articles': new_articles})
     elif request.method == "POST":
-        comment = forms.CommentForm(request.POST)
 
         # comment.save()
         return render(request, 'blog/single.html', context={'article': article, 'tags': tags, 'kinds': kinds,
 
-                                                            'new_articles': new_articles, 'form': form})
+                                                            'new_articles': new_articles})
 
 
 def comment(request, aid):
@@ -101,18 +93,14 @@ def comment(request, aid):
     article = Article.manager.all().filter(pk=aid).first()
     if request.method == "GET":
         return render(request, 'blog/single.html', context={'article': article, 'tags': tags, 'kinds': kinds,
-                                                        'new_articles': new_articles, 'form': form})
+                                                        'new_articles': new_articles})
     elif request.method == "POST":
-
-        comment = forms.CommentForm(request.POST)
-        if comment.is_valid():
-            print("ffffffffffffffddfffffffffff")
-            # comment.user = request.session.get('account')
-            # comment.article = aid
-
+        content = request.POST.get('content')
+        account = request.session.get('account')
+        CommentManager().create_save_comment(account, aid, content)
         return render(request, 'blog/single.html', context={'article': article, 'tags': tags, 'kinds': kinds,
 
-                                                            'new_articles': new_articles, 'form': form})
+                                                            'new_articles': new_articles})
 
 
 def article_kind(request, page, kid):
@@ -191,5 +179,6 @@ def article_date(request, page, date):
             pages = [x+1 for x in range(page_count)]
             return render(request, 'blog/index.html', context={'articles': articles, 'tags': tags, 'kinds': kinds,
                                                                'pages': pages, 'current_page': page, 'new_articles': new_articles})
+
 
 
