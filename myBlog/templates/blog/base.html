@@ -122,7 +122,12 @@
             </main>
             {% endblock %}
             <aside class="col-md-4">
+                <div class="widget widget-content">
+                    {% block catalog %}
+                    {% endblock %}
+                </div>
                 <div class="widget widget-recent-posts">
+
                     {% block newarticle %}
                     <h3 class="widget-title">最新文章</h3>
                     <ul>
@@ -144,7 +149,7 @@
                         {% getArticleMonth as articleMonth %}
                         {% for date in articleMonth %}
                             <li>
-                                <a href="#">{{date.year}}年 {{date.month}}月</a>
+                                <a href="{% url 'blog:article_date' 1  date.year date.month %}">{{date.year}}年 {{date.month}}月</a>
                             </li>
                         {% empty %}
                             没有文件
@@ -176,7 +181,7 @@
                         {% getArticleTag as articleTag %}
                         {% for tag in articleTag %}
                             <li>
-                                <a href="{% url 'blog:article_kind' 1  tag.id %}">{{tag.name}}</a>
+                                <a href="{% url 'blog:article_tag' 1  tag.id %}">{{tag.name}}</a>
                             </li>
                         {% empty %}
                             没有标签

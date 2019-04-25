@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from comment.forms import CommentForm
-from comment.models import CommentManager
 from django.http import HttpResponse
 from . import forms
 from .models import *
@@ -108,13 +107,10 @@ def article_kind(request, page, kid):
     """
     page = int(page)
     # 获取所有文章
-    count = Article.manager.all().filter(kind=kid).count()
-    tags = ArticleTag.manager.all()
-    kinds = ArticleKind.manager.all()
-    new_articles = Article.manager.all().order_by('-publish_time')[:3]
+    articles = Article.manager.all().filter(kind=kid)
+    count = articles.count()
     if count <= 3:
-        articles = Article.manager.all().filter(kind=kid)
-        return render(request, 'blog/index.html', context={'articles': articles, 'tags': tags, 'kinds': kinds, 'new_articles': new_articles})
+        return render(request, 'blog/index.html', context={'articles': articles})
     else:
         page_count = count//3 + 1
         if page > page_count:
@@ -122,8 +118,7 @@ def article_kind(request, page, kid):
         else:
             articles = Article.manager.all().filter(kind=kid)[(page-1)*3:page*3]
             pages = [x+1 for x in range(page_count)]
-            return render(request, 'blog/index.html', context={'articles': articles, 'tags': tags, 'kinds': kinds,
-                                                               'pages': pages, 'current_page': page, 'new_articles': new_articles})
+            return render(request, 'blog/index.html', context={'articles': articles, 'pages': pages, 'current_page': page})
 
 
 def article_tag(request, page, tid):
@@ -136,44 +131,34 @@ def article_tag(request, page, tid):
     """
     page = int(page)
     # 获取所有文章
-    count = ArticleTag.manager.all().filter(kp=tid).first().article.all().count()
-    tags = ArticleTag.manager.all()
-    kinds = ArticleKind.manager.all()
-    new_articles = Article.manager.all().order_by('-publish_time')[:3]
+    articles = ArticleTag.manager.all().filter(pk=tid).first().article.all()
+    count = articles.count()
     if count <= 3:
-        articles = ArticleTag.manager.all().filter(kp=tid).first().article.all()
-        return render(request, 'blog/index.html', context={'articles': articles, 'tags': tags, 'kinds': kinds, 'new_articles': new_articles})
+        return render(request, 'blog/index.html', context={'articles': articles})
     else:
         page_count = count//3 + 1
         if page > page_count:
             return HttpResponse('该页面不存在')
         else:
-            articles = ArticleTag.manager.all().filter(kp=tid).first().article.all()[(page-1)*3:page*3]
+            articles = articles[(page-1)*3:page*3]
             pages = [x+1 for x in range(page_count)]
-            return render(request, 'blog/index.html', context={'articles': articles, 'tags': tags, 'kinds': kinds,
-                                                               'pages': pages, 'current_page': page, 'new_articles': new_articles})
+            return render(request, 'blog/index.html', context={'articles': articles, 'pages': pages, 'current_page': page})
 
 
-def article_date(request, page, date):
+def article_date(request, page, year, month):
     page = int(page)
     # 获取所有文章
 
-    count = Article.manager.all().filter(publish_date=date).first().article.all().count()
-    tags = ArticleTag.manager.all()
-    kinds = ArticleKind.manager.all()
-    new_articles = Article.manager.all().order_by('-publish_time')[:3]
+    articles = Article.manager.all().filter(publish_date__year=year).filter(publish_date__month=month)
+    count = articles.count()
     if count <= 3:
-        articles = ArticleTag.manager.all().filter(publish_date=date).first().article.all()
-        return render(request, 'blog/index.html', context={'articles': articles, 'tags': tags, 'kinds': kinds, 'new_articles': new_articles})
+        return render(request, 'blog/index.html', context={'articles': articles})
     else:
         page_count = count//3 + 1
         if page > page_count:
             return HttpResponse('该页面不存在')
         else:
-            articles = ArticleTag.manager.all().filter(publish_date=date).first().article.all()[(page-1)*3:page*3]
+            articles = articles[(page-1)*3:page*3]
             pages = [x+1 for x in range(page_count)]
-            return render(request, 'blog/index.html', context={'articles': articles, 'tags': tags, 'kinds': kinds,
-                                                               'pages': pages, 'current_page': page, 'new_articles': new_articles})
-
-
+            return render(request, 'blog/index.html', context={'articles': articles, 'pages': pages, 'current_page': page})
 

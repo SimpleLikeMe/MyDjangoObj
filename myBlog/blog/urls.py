@@ -13,7 +13,7 @@ urlpatterns = [
     url('^full_width/(\d+)/$', views.full_width, name='full_width'),
     url('^single/(\d+)/$', views.single, name='single'),
     url('^comment/(\d+)/$', views.comment, name='comment'),
-    url('^(\d+)/(\d+)/$', views.article_kind, name='article_kind'),
-    url('^(\d+)/(\d+)/$', views.article_tag, name='article_tag'),
-
+    url('^kind/(\d+)/(\d+)/$', views.article_kind, name='article_kind'),
+    url('^tag/(\d+)/(\d+)/$', views.article_tag, name='article_tag'),
+    url('^file/(\d+)/(\d{4})/(\d{1})/$', views.article_date, name='article_date'),
 ]
