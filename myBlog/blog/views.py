@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.db.models import Q
+from comment.forms import CommentForm
+from comment.models import CommentManager
 from django.http import HttpResponse
 from . import forms
 from .models import *
@@ -62,22 +63,14 @@ def full_width(request, page):
 
 
 def single(request, aid):
-    tags = ArticleTag.manager.all()
-    kinds = ArticleKind.manager.all()
-    new_articles = Article.manager.all().order_by('-publish_time')[:3]
     article = Article.manager.all().filter(pk=aid).first()
     if request.method == "GET":
+        form = CommentForm()
         article.read_count += 1
         article.save()
-
-        return render(request, 'blog/single.html', context={'article': article, 'tags': tags, 'kinds': kinds,
-                                                            'new_articles': new_articles})
+        return render(request, 'blog/single.html', context={'article': article, 'form': form})
     elif request.method == "POST":
-
-        # comment.save()
-        return render(request, 'blog/single.html', context={'article': article, 'tags': tags, 'kinds': kinds,
-
-                                                            'new_articles': new_articles})
+        return render(request, 'blog/single.html', context={'article': article})
 
 
 def comment(request, aid):
@@ -86,21 +79,23 @@ def comment(request, aid):
     :param request:
     :return:
     """
-    form = forms.CommentForm()
-    tags = ArticleTag.manager.all()
-    kinds = ArticleKind.manager.all()
-    new_articles = Article.manager.all().order_by('-publish_time')[:3]
     article = Article.manager.all().filter(pk=aid).first()
     if request.method == "GET":
-        return render(request, 'blog/single.html', context={'article': article, 'tags': tags, 'kinds': kinds,
-                                                        'new_articles': new_articles})
+        form = CommentForm()
+        article.read_count += 1
+        return render(request, 'blog/single.html', context={'article': article, 'form': form})
     elif request.method == "POST":
-        content = request.POST.get('content')
-        account = request.session.get('account')
-        CommentManager().create_save_comment(account, aid, content)
-        return render(request, 'blog/single.html', context={'article': article, 'tags': tags, 'kinds': kinds,
-
-                                                            'new_articles': new_articles})
+        comment = CommentForm(request.POST)
+        if comment.is_valid():
+            comment = comment.save(commit=False)
+            comment.user = User.manager.all().filter(account=request.session.get("account")).first()
+            comment.article = Article.manager.all().filter(pk=aid).first()
+            comment.article.comment_count += 1
+            comment.article.save()
+            comment.save()
+            return redirect('/blog/single/%s' % aid)
+        else:
+            return HttpResponse("该页面不存在")
 
 
 def article_kind(request, page, kid):

@@ -20,12 +20,3 @@ class UserForm(forms.ModelForm):
             'password': forms.widgets.PasswordInput()
         }
 
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['content']
-        labels = {
-            'content': '评论：',
-        }
-

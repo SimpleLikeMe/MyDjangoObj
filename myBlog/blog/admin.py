@@ -43,6 +43,5 @@ class CommentAdmin(admin.ModelAdmin):
 # 注册表单交给管理界面管理
 admin.site.register(User, UserAdmin)
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Comment, CommentAdmin)
 admin.site.register(ArticleKind)
 admin.site.register(ArticleTag)

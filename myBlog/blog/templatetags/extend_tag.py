@@ -1,5 +1,6 @@
 from django import template
 from ..models import *
+from comment.models import Comment
 
 # 得到django负责管理标签和过滤器类
 register = template.Library()
@@ -38,4 +39,8 @@ def getNewArticles():
 @register.simple_tag
 def getArticleTag():
     return ArticleTag.manager.all()
+
+@register.simple_tag
+def getComment():
+    return Comment.manager.all()
 
