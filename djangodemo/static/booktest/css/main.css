@@ -1,0 +1,24 @@
+
+
+
+li,a{
+    display: block;
+    width: 100px;
+    height: 20px;
+    list-style: none;
+    background-color: rebeccapurple;
+}
+
+div.content{
+    width: 1000px;
+    height: 100px;
+}
+
+div.footer{
+    width: 1000px;
+    height: 100px;
+    background-color: red;
+}
+
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            基础页面
+        {% endblock %}
+
+    </title>
+    <link rel="stylesheet" href="static/booktest/css/main.css">
+</head>
+<body>
+    <div class="nav">
+        {% block nav %}
+            导航条
+        {% endblock %}
+    </div>
+
+    <div class="content">
+        {% block content %}
+            内容
+        {% endblock %}
+    </div>
+
+    <div class="footer">
+        {% block footer %}
+            脚注
+        {% endblock %}
+    </div>
+
+</body>
+</html>

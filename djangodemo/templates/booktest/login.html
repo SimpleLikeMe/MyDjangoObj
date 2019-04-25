@@ -1,0 +1,11 @@
+{% extends 'booktest/base.html' %}
+
+<div class="content">
+    {% block content %}
+    <form action="{% url 'booktest:home'  %}" method="post">
+        {% csrf_token %}
+        账号：<input type="text" name="account"><br>
+        <input type="submit">
+    </form>
+    {% endblock %}
+</div>
