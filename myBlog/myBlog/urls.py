@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from . import views
+from haystack.views import SearchView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('^$', views.index),
     url(r'^blog/', include('blog.urls', namespace='blog')),
+    # 全文搜索
+    url(r'^search/', SearchView(), name='search'),
 ]

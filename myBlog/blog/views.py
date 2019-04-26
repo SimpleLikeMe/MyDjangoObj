@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from comment.forms import CommentForm
 from django.http import HttpResponse
+from django.core.paginator import Paginator, Page
 from . import forms
 from .models import *
+
+import markdown
 
 # Create your views here.
 
@@ -28,20 +31,25 @@ def index(request, page):
     :param request:
     :return:
     """
-    page = int(page)
+    page = request.GET.get('page')
+    page = page if page else 1
     # 获取所有文章
-    count = Article.manager.all().count()
-    if count <= 3:
-        articles = Article.manager.all()
-        return render(request, 'blog/index.html', context={'articles': articles})
-    else:
-        page_count = count//3 + 1
-        if page > page_count:
-            return HttpResponse('该页面不存在')
-        else:
-            articles = Article.manager.all()[(page-1)*3:page*3]
-            pages = [x+1 for x in range(page_count)]
-            return render(request, 'blog/index.html', context={'articles': articles, 'pages': pages, 'current_page': page})
+    articles = Article.manager.all()
+    paginator = Paginator(articles, 2)
+
+    page = paginator.page(page)
+
+    # count = articles.count()
+    # page_count = count//3 + 1
+    # if page > page_count:
+    #     return render(request, 'blog/index.html', context={'articles': articles, 'current_page': 1})
+    #
+    # if count <= 3:
+    #     return render(request, 'blog/index.html', context={'articles': articles, 'current_page': 1, 'page': page})
+    #
+    # articles = articles[(page-1)*3:page*3]
+    # pages = [x+1 for x in range(page_count)]
+    return render(request, 'blog/index.html', context={'articles': articles, 'current_page': 1, 'page': page})
 
 
 def full_width(request, page):
@@ -110,7 +118,7 @@ def article_kind(request, page, kid):
     articles = Article.manager.all().filter(kind=kid)
     count = articles.count()
     if count <= 3:
-        return render(request, 'blog/index.html', context={'articles': articles})
+        return render(request, 'blog/index.html', context={'articles': articles, 'current_page': page})
     else:
         page_count = count//3 + 1
         if page > page_count:
@@ -134,7 +142,7 @@ def article_tag(request, page, tid):
     articles = ArticleTag.manager.all().filter(pk=tid).first().article.all()
     count = articles.count()
     if count <= 3:
-        return render(request, 'blog/index.html', context={'articles': articles})
+        return render(request, 'blog/index.html', context={'articles': articles, 'current_page': page})
     else:
         page_count = count//3 + 1
         if page > page_count:
@@ -152,7 +160,7 @@ def article_date(request, page, year, month):
     articles = Article.manager.all().filter(publish_date__year=year).filter(publish_date__month=month)
     count = articles.count()
     if count <= 3:
-        return render(request, 'blog/index.html', context={'articles': articles})
+        return render(request, 'blog/index.html', context={'articles': articles, 'current_page': page})
     else:
         page_count = count//3 + 1
         if page > page_count:
@@ -161,4 +169,18 @@ def article_date(request, page, year, month):
             articles = articles[(page-1)*3:page*3]
             pages = [x+1 for x in range(page_count)]
             return render(request, 'blog/index.html', context={'articles': articles, 'pages': pages, 'current_page': page})
+
+
+def filter_index_articles(request, articles, page=1):
+    count = articles.count()
+    page_count = count//3 + 1
+    if page > page_count:
+        return render(request, 'blog/index.html', context={'articles': articles, 'current_page': 1})
+
+    if count <= 3:
+        return render(request, 'blog/index.html', context={'articles': articles, 'current_page': page})
+
+    articles = articles[(page-1)*3:page*3]
+    pages = [x+1 for x in range(page_count)]
+    return render(request, 'blog/index.html', context={'articles': articles, 'pages': pages, 'current_page': page})
 
