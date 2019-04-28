@@ -1,0 +1,22 @@
+{% extends "bookmanage/layout.html" %}
+{% block title %} 注册 {% endblock %}
+{% block link %} 
+	<a href="{% url 'bookmanage:login' %}"> 返回 </a>
+{% endblock %}
+{% block body %}
+	{% if error %}
+	<div class=error>
+	  <strong>Errror : </strong> {{error}}
+	</div>
+	{% endif %}
+	<form action="{% url 'bookmanage:register' %}" method=post>
+		{% csrf_token %}
+		<p>用户名&nbsp;&nbsp;&nbsp;: {{form.name}}</p>
+		<p>密&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;: {{form.password}}</p>
+		<p>确认密码: <input type="password" name="confirm"></p>
+		<p>学&nbsp;&nbsp;&nbsp;院&nbsp;&nbsp;&nbsp;: {{form.college}}</p>
+		<p>邮&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;: {{form.email}}</p>
+	  <div class=actions><input type=submit value="注册"></div>
+	</form>
+
+{% endblock %}

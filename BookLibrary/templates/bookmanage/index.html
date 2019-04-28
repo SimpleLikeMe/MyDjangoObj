@@ -1,0 +1,9 @@
+{% extends "bookmanage/layout.html" %}
+{% block title %}主页{% endblock %}
+{% block link %}
+  <a href="{% url 'bookmanage:login' %}">读者登录 </a>
+{% endblock %}
+
+{% block body %}
+  <h2>欢迎使用</h2>
+{% endblock %}
