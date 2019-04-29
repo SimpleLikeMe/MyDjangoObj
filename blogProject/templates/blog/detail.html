@@ -13,8 +13,6 @@
 
 </head>
 <body>
-
-
     <nav class="navbar navbar-default">
 			<div class="container">
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -97,7 +95,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8" style="border-bottom: 1px solid #777777">
                 <div style="border-bottom: 1px solid #777777; margin-bottom: 15px;"><h2>{{article.title}}</h2></div>
-				<div>{{article.content}}</div>
+				<div>{{article.content|safe}}</div>
 				{% for comment in article.comment_set.all %}
 					<div style="margin-top: 20px; margin-bottom: 20px">
 						<p><a href="">{{comment.user.nickname}}:</a> <span style="float: right">{{comment.comment_time}}</span></p>
@@ -120,3 +118,4 @@
 
 </body>
 </html>
+

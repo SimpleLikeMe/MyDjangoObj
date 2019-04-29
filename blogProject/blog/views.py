@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+# 邮件类库
+from django.core.mail import send_mail, send_mass_mail
+from PIL import Image, ImageDraw, ImageFont
 from .models import *
+
 # Create your views here.
 
 
@@ -178,3 +182,12 @@ def comment_article(request):
     article.save()
     # return HttpResponseRedirect("/blog/detail/?")
     return render(request, "blog/detail.html", context={"article": article})
+
+
+def send_email(request):
+    """
+    发送邮件
+    :param request:
+    :return:
+    """
+    return render(request, 'blog/send_email.html')

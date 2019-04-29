@@ -5,6 +5,6 @@ from .models import *
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['password', 'email', 'name', 'college', 'account']
+        fields = '__all__'
 
 

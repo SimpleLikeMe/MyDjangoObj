@@ -1,0 +1,113 @@
+﻿django开发前期准备
+1、安装虚拟环境管理工具：在cmd下使用pip install virtualenv
+2、安装virtualenvwrapper虚拟环境高级管理工具：在cmd下使用pip install cirtualenvwrapper-win
+3、创建虚拟环境：在cmd下使用命令mkvirtualenv 虚拟环境名
+4、安装django: 在cmd下使用命令 pip install django
+5、创建远程厂库：在git远程创建厂库、获取厂库的url地址
+6、克隆远程厂库：创建一个文件夹，在该文件夹中启动git bash here进入到git的cmd环境下，使用git clone 远程厂库URL
+7、使用虚拟环境：在cmd下使用workon 虚拟环境名
+8、创建django项目：切换到从远程厂库获取的项目文件夹中使用命令django-admin startproject django项目名
+9、将厂库交由pycharm管理：在pycharm中打开克隆第六步创建的目录作为工程目录
+10、配置pycharm环境变量：点击pycharm左上角的file下的setting去配置环境变量
+11、将项目交给git管理：使用pycharm下的git管理工具commit将项目提交到本地厂库
+12、将项目提交到远程厂库：使用pycharm下的git管理工具push命令
+djang开发项目配置
+1、创建应用：在项目目录下从pycharm打开terminal使用python manage.py startapp app名
+2、创建模型：
+	2.1、定义模型类：在创建的app中找到model.py文件将下面代码粘贴到文件中保存
+		from django.db import models
+
+		# Create your models here.
+
+		class BookInfo(models.Model):
+			btitle = models.CharField(max_length=20)
+			bpub_date = models.DateTimeField()
+			def __str__(self):
+				return "%d %s" % (self.pk,self.btitle)
+
+
+		class HeroInfo(models.Model):
+			hname = models.CharField(max_length=20)
+			hgender = models.BooleanField()
+			hcontent = models.CharField(max_length=100)
+			hBook = models.ForeignKey('BookInfo',on_delete=models.CASCADE)
+			def __str__(self):
+				return "%d %s" % (self.pk, self.hname)
+	2.2、配置数据库：在setting.py文件中找到DATABASES，将其配置为mysql数据库，若不配置则为默认的SQLIT数据库
+		DATABASES = {
+			'default': {
+			'ENGINE': 'django.db.backends.mysql',
+			'NAME': 'databasename',
+			'USER': 'root',
+			'PASSWORD': '123456',
+			'HOST': '127.0.0.1',
+			'PORT': '3306',
+			}
+		}
+		然后在数据库中创建数据库名为databasename的数据库
+		（在python3中django 连接mysql默认驱动是MySQLdb，MySQLdb没有支持python3的版本
+			在django 项目配置文件同目录下的__init__.py文件中加入以下代码:
+			import pymysql
+			pymysql.install_as_MySQLdb()）
+
+	2.3、激活模型：在setting中找到INSTALLED_APPS，在最后添加自己创建的应用名
+		INSTALLED_APPS = [
+			'django.contrib.admin',
+			'django.contrib.auth',
+			'django.contrib.contenttypes',
+			'django.contrib.sessions',
+			'django.contrib.messages',
+			'django.contrib.staticfiles',
+			'应用名',
+		]
+	2.4、生成迁移文件：在项目下的terminal下使用python manage.py makemigrations 
+	2.5、执行迁移文件：在项目下的terminal下使用python manage.py migrate
+3、创建站点：
+	3.1、创建超级用户：在项目下的terminal下使用python manage.py createsuperuser后根据提示设置用户名、邮箱、密码
+	3.2、启动服务器：在项目下的terminal下使用python manage.py runserver在浏览器地址栏输入127.0.0.1:8000/admin访问服务器，输入用户密码登录管理
+4、管理界面本地化：编辑settings.py文件，设置编码、时区修改下面两个参数
+	LANGUAGE_CODE = 'zh-Hans'
+	TIME_ZONE = 'Asia/Shanghai'
+5、提供数据给超级用户管理：找到项目下的admin.py文件，在文件中写入下面代码（即将两个模型类交给admin管理）
+	from django.contrib import admin
+	from .models import *
+	# Register your models here.
+	admin.site.register(BookInfo)
+	admin.site.register(HeroInfo)
+6、创建视图：
+	6.1、在项目文件夹下的view.py文件中加入下面代码：
+		from django.http import HttpResponse
+		def index(request):
+			return HttpResponse("index")
+		def detail(request,id):
+			return HttpResponse("detail %s" % id)
+	6.2、配置项目url:在项目文件夹中的urls.py文件中加入下面代码
+		from django.contrib import admin
+		from django.urls import path
+		from django.conf.urls import include,url
+		urlpatterns = [
+		path('admin/', admin.site.urls),
+		url(r'^', include('booktest.urls')),
+		]
+	6.3、配置app的url：在app文件夹中的urls.py文件中加入下面代码
+		from django.conf.urls import url
+		from . import views
+		urlpatterns = [
+		url(r'^$', views.index),
+		url(r'^list/$',views.list),
+		url(r'^detail/([0-9]+)/$', views.detail),
+		]
+
+			
+
+
+
+    
+
+
+
+
+
+
+
+

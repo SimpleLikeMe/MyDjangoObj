@@ -2,51 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7644a3ed-c44c-4c37-b8a6-22fe77113a26" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/search_indexes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/templatetags/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/templatetags/extend_tag.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/css/bootstrap-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/bootstrap-3.3.7-dist/js/npm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/jquery-2.1.4/jquery-2.1.4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/static/bookmanage/js/lib/jquery-2.1.4/jquery-2.1.4.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BookLibrary/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BookLibrary-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BookLibrary-master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../blogProject/templates/blog/send_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../django项目创建步骤.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../项目环境" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book.db" beforeDir="false" afterPath="$PROJECT_DIR$/book.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book.py" beforeDir="false" afterPath="$PROJECT_DIR$/book.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BookLibrary/BookLibrary/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/BookLibrary/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0002_auto_20190428_1619.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0003_auto_20190428_1636.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0004_auto_20190428_1713.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0005_auto_20190428_1912.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BookLibrary/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/templates/bookmanage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/templates/bookmanage/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/templates/bookmanage/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/templates/bookmanage/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/templates/bookmanage/reader_book.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/templates/bookmanage/reader_book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/templates/bookmanage/reader_history.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/templates/bookmanage/reader_history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blogProject/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blogProject/blogProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/blogProject/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blogProject/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/blog/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blogProject/templates/blog/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/templates/blog/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../blogProject/templates/blog/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/templates/blog/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blogProject/templates/blog/publish.html" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/templates/blog/publish.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myBlog/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../myBlog/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../myBlog/myBlog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../myBlog/myBlog/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/book.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="379">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -121,8 +96,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/manager_user_modify.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+            <state relative-caret-position="494">
+              <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -260,12 +235,12 @@
       <updated>1553750612447</updated>
       <workItem from="1556261889836" duration="767000" />
       <workItem from="1556411774651" duration="5913000" />
-      <workItem from="1556498164028" duration="1919000" />
+      <workItem from="1556498164028" duration="2546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8599000" />
+    <option name="totallyTimeSpent" value="9226000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -412,7 +387,7 @@
     <entry file="file://$PROJECT_DIR$/book.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
@@ -424,8 +399,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/manager_user_modify.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        <state relative-caret-position="494">
+          <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
         </state>
       </provider>
     </entry>

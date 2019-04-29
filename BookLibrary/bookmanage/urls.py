@@ -3,6 +3,7 @@ from . import views
 
 app_name = 'bookmanage'
 
+
 urlpatterns = [
     url('^$', views.index, name='index'),
     url('^login/$', views.login, name='login'),
@@ -14,4 +15,5 @@ urlpatterns = [
     url('^borrowing/(\d+)/$', views.borrowing, name='borrowing'),
     url('^history/$', views.history, name='history'),
     url('^modify/$', views.modify, name='modify'),
+    url('^active/(\d+)/$', views.active_account, name='active'),
 ]

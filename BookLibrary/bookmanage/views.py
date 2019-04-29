@@ -1,7 +1,12 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect, reverse
+from django.http import HttpResponse
+# 发送邮件
+from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from .forms import *
 import random
 from hashlib import md5
+
+
 # Create your views here.
 
 
@@ -46,10 +51,25 @@ def register(request):
             if not form.instance.password:
                 return redirect('/bookmanage/register')
             # 获取随机账号
-            form.instance.account = make_account()
+            account = make_account()
+            form.instance.account = account
             # 加密密码
             form.instance.password = encryption_pwd(form.instance.password)
             form.save()
+            email = form.instance.email
+            # 发送邮件
+            try:
+                from django.conf import settings
+                # send_mail("用户注册", "<a href=''>注册<a/>", settings.DEFAULT_FROM_EMAIL, ["645933348@qq.com", ])
+                active_url = 'http://127.0.0.1:8000' + reverse('bookmanage:active', args=(account,))
+                msg = EmailMultiAlternatives("用户注册", "恭喜您注册成功，您的账号为%s,<a href=%s>点击我进行激活账号</a>"
+                                             % (account, active_url), settings.DEFAULT_FROM_EMAIL, [email, ])
+                msg.content_subtype = "html"
+                # msg.attach_file("./manage.py", "text/*")
+                msg.send()
+            except Exception as e:
+                print(e)
+
             return redirect('/bookmanage/login')
         else:
             return redirect('/bookmanage/register')
@@ -157,4 +177,12 @@ def check_user(account, password):
     return user
 
 
-
+def active_account(request, account):
+    """
+    激活账号
+    :param request:
+    :return:
+    """
+    user = User.objects.all().filter(account=account).first()
+    user.status = True
+    return HttpResponse('恭喜您激活成功')
