@@ -1,7 +1,11 @@
 from django.db import models
-import datetime
-import calendar
+from tinymce.models import HTMLField
 # Create your models here.
+
+
+class BorrowHistoryManage(models.Manager):
+    def crate_borrow_history(self, user, book):
+        return self.create(user=user, book=book)
 
 
 class User(models.Model):
@@ -32,4 +36,20 @@ class BorrowHistory(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     borrow_time = models.DateTimeField(auto_now_add=True)
     return_time = models.DateTimeField(auto_now_add=True)
-    status = models.BooleanField(default=False)
+    status = models.BooleanField(default=True)
+    manage = BorrowHistoryManage()
+
+
+class Picture(models.Model):
+    name = models.CharField(max_length=20)
+    path = models.ImageField(upload_to='index')
+    index = models.SmallIntegerField(unique=True)
+
+
+class Message(models.Model):
+    title = models.CharField(max_length=30)
+    content = HTMLField()
+
+    def __str__(self):
+        return self.title
+

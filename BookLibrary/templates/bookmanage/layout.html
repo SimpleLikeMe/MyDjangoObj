@@ -1,6 +1,8 @@
 <!doctype html>
 <title> {% block title %} 图书管理系统 {% endblock %} </title>
-<link rel=stylesheet type=text/css href="/static/bookmanage/css/style.css">
+{% block staticlink %}
+    <link rel=stylesheet type=text/css href="/static/bookmanage/css/style.css">
+{% endblock %}
 <div class=page>
   <h1>图书管理系统</h1>
   <div class=navigation>
@@ -10,7 +12,7 @@
     {% block body %}{% endblock %}
    </div>
   <div class=footer>
-     &mdash; 华中科技大学
+     <p>&mdash; 华中科技大学</p>
   </div>
 </div>
     

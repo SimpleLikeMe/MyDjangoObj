@@ -5,3 +5,5 @@ from .models import *
 admin.site.register(User)
 admin.site.register(Book)
 admin.site.register(BorrowHistory)
+admin.site.register(Picture)
+admin.site.register(Message)

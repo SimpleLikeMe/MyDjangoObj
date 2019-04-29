@@ -23,17 +23,17 @@
 	{% endif %}
 	<div >
 	  <h2 > 借阅信息 </h2>
-	  {% if book.status  %}
-	  <li> 借阅者姓名 {{reader.user_name}}</li>
-	  <li> 借阅日期  {{reader.date_borrow}}</li>
-	  <li> 还书日期  {{reader.date_return}}</li>
+	  {% if borrow  %}
+	  <li> 借阅者姓名 {{borrow.user.name}}</li>
+	  <li> 借阅日期  {{borrow.borrow_time}}</li>
+	  <li> 还书日期  {{borrow.return_time}}</li>
 	  {% else %}
 	  <li> 无 </li>
 	  {% endif %}
-	  <form action="" method=post>
+	  <form action="{% url 'bookmanage:borrowing'  book.id%}" method=post>
+		{% csrf_token %}
 	    <div class=actions>
 	      <input type=submit value="借阅">
 	    </div>
 	  </form>
-
 {% endblock %}

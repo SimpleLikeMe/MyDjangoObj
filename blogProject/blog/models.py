@@ -1,5 +1,5 @@
 from django.db import models
-
+from tinymce.models import HTMLField
 # Create your models here.
 
 
@@ -56,7 +56,7 @@ class Article(models.Model):
     # 标题
     title = models.CharField(max_length=30)
     # 内容
-    content = models.CharField(max_length=255)
+    content = HTMLField()
     # 所属用户
     user = models.ForeignKey("User", on_delete=models.CASCADE)
     # 阅读次数

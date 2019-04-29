@@ -11,6 +11,7 @@ urlpatterns = [
     url('^query/$', views.query, name='query'),
     url('^bookinfo/(\d+)/$', views.book_info, name='bookinfo'),
     url('^info/$', views.info, name='info'),
+    url('^borrowing/(\d+)/$', views.borrowing, name='borrowing'),
     url('^history/$', views.history, name='history'),
     url('^modify/$', views.modify, name='modify'),
 ]

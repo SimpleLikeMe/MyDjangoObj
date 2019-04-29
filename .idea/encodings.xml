@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/BookLibrary/static/bookmanage/js/lib" charset="GBK" />
     <file url="file://$PROJECT_DIR$/blogProject/static" charset="GBK" />
     <file url="file://$PROJECT_DIR$/blogProject/templates/blog/detail.html" charset="GBK" />
     <file url="file://$PROJECT_DIR$/blogProject/templates/blog/home.html" charset="GBK" />

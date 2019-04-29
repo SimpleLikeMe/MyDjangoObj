@@ -77,8 +77,21 @@ def query(request):
 
 def book_info(request, bid):
     book = Book.objects.all().filter(pk=bid).first()
-    print(book)
-    return render(request, 'bookmanage/reader_book.html', context={'book': book})
+    borrow = BorrowHistory.manage.all().filter(book=book).filter(status=True).first()
+    return render(request, 'bookmanage/reader_book.html', context={'book': book, 'borrow': borrow})
+
+
+def borrowing(request, bid):
+    book = Book.objects.all().filter(pk=bid).first()
+    if book.status:
+        # 以借
+        return redirect('/bookmanage/bookinfo/%s' % (bid,))
+    book.status = True
+    book.save()
+    user = User.objects.all().filter(account=request.session.get('account')).first()
+    # 创建借阅记录
+    BorrowHistory.manage.crate_borrow_history(user=user, book=book)
+    return redirect('/bookmanage/bookinfo/%s' % (bid,))
 
 
 def info(request):
@@ -88,8 +101,9 @@ def info(request):
 
 
 def history(request):
-
-    return render(request, 'bookmanage/reader_history.html')
+    user = User.objects.all().filter(account=request.session.get('account')).first()
+    borrows = BorrowHistory.manage.all().filter(user=user)
+    return render(request, 'bookmanage/reader_history.html', context={'borrows': borrows})
 
 
 def modify(request):
@@ -141,4 +155,6 @@ def check_user(account, password):
     if user.password != encryption_pwd(str(password)):
         return False
     return user
+
+
 

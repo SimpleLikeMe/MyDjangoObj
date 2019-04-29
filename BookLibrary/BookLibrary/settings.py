@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bookmanage',
+    # 富文本编辑器
+    'tinymce',
+
 ]
 
 MIDDLEWARE = [
@@ -122,4 +125,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# 配置静态资源路径
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# 配置媒体对象路径
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+
+
+TINYMCE_DEFAULT_CONFIG = {
+    # 主题，高级格式or(简单格式simple)
+    'theme': 'advanced',
+    'width': 600,
+    'height': 400,
+}
+

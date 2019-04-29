@@ -11,12 +11,12 @@
 	    <th align="center"> 还书日期 </th>
 	    <th align="center"> 状态 </th>
 	  </tr>
-	  {% for histroy in histroys %}
+	  {% for borrow in borrows %}
 	  <tr>
-	    <th align="center"> {{histroy.book_name}} </th>
-	    <th align="center"> {{histroy.date_borrow}}</th>
-	    <th align="center"> {{histroy.date_return}} </th> 
-	    <th align="center"> {{histroy.status}} </th>
+	    <th align="center"> {{borrow.book.name}} </th>
+	    <th align="center"> {{borrow.borrow_time}}</th>
+	    <th align="center"> {{borrow.return_time}} </th>
+	    <th align="center"> {{borrow.status}} </th>
 	  </tr>
 	  {% endfor %}
 	</table>	
