@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'detail/.*', views.detail_article, name="detail"),
     url(r'delete/.*', views.del_article, name="delete"),
     url(r'comment/.*', views.comment_article, name="comment"),
+    url(r'^verify/$', views.verify, name='verify')
 ]

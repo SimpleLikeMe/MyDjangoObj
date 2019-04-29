@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7644a3ed-c44c-4c37-b8a6-22fe77113a26" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../blogProject/templates/blog/send_email.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../django项目创建步骤.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../项目环境" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/BookLibrary/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/BookLibrary/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0002_auto_20190428_1619.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0003_auto_20190428_1636.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0004_auto_20190428_1713.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/migrations/0005_auto_20190428_1912.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/bookmanage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/bookmanage/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookLibrary/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../BookLibrary/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blogProject/blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/blog/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../blogProject/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/blog/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blogProject/templates/blog/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/templates/blog/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../blogProject/templates/blog/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/templates/blog/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../myBlog/myBlog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../myBlog/myBlog/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blogProject/templates/blog/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../blogProject/templates/blog/login.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 # 邮件类库
 from django.core.mail import send_mail, send_mass_mail
 from PIL import Image, ImageDraw, ImageFont
+import random,io
 from .models import *
 
 # Create your views here.
@@ -38,16 +39,23 @@ def login(request):
     elif request.method == "POST":
         account = request.POST["account"]
         pwd = request.POST["password"]
+        verify_code = request.POST["verifycode"]
         users = User.objects.all().filter(account=account)
+        if verify_code != request.session["verifycode"]:
+            # 验证码错误
+            return HttpResponseRedirect('/blog/login')
+
         if not users.exists():
+            # 用户不存在
             return HttpResponseRedirect('/blog/login')
 
-        if users.first().password == pwd:
+        if users.first().password != pwd:
+            # 密码错误
             request.session['account'] = request.POST["account"]
-            return HttpResponseRedirect('/blog/home')
-
-        else:
             return HttpResponseRedirect('/blog/login')
+
+        # 验证成功
+        return HttpResponseRedirect('/blog/home')
 
 
 def register(request):
@@ -191,3 +199,53 @@ def send_email(request):
     :return:
     """
     return render(request, 'blog/send_email.html')
+
+
+def verify(request):
+    """
+    验证码
+    :param request:
+    :return:
+    """
+    # 定义背景图片的背景颜色、宽、高
+    bg_color = (random.randrange(20, 100),
+               random.randrange(20, 100),
+               random.randrange(20, 100))
+    width = 200
+    height = 50
+    # 创建画面对象
+    im = Image.new('RGB', (width, height), bg_color)
+    # 创建画笔对象
+    draw = ImageDraw.Draw(im)
+    # 制造噪点
+    for i in range(100):
+        xy = (random.randrange(0, width), random.randrange(0, height))
+        fill = (random.randrange(0, 255), 255, random.randrange(0, 255))
+        draw.point(xy=xy, fill=fill)
+
+    # 定义验证码的被选值
+    str1 = 'ABCD123EFGHIJK456LMNOPQRS789TUVWXYZ0'
+    rand_str = ''
+    # 随机取出四个字母或数字
+    for i in range(4):
+        rand_str += str1[random.randrange(0, len(str1))]
+    # 构造字体对象
+    font = ImageFont.truetype('arial.ttf', 23)
+    # 字体颜色
+    fontcolor = (255, random.randrange(0, 255), random.randrange(0, 255))
+    # 绘制四个字
+    draw.text((10, 12), rand_str[0], font=font, fill=fontcolor)
+    draw.text((50, 12), rand_str[1], font=font, fill=fontcolor)
+    draw.text((100, 12), rand_str[2], font=font, fill=fontcolor)
+    draw.text((150, 12), rand_str[3], font=font, fill=fontcolor)
+    # 释放画笔
+    del draw
+    # 返回session
+    request.session['verifycode'] = rand_str
+    # 获取io流
+    f = io.BytesIO()
+    # 将图片保存
+    im.save(f, 'png')
+    # 将图片的值发给前端页面
+    return HttpResponse(f.getvalue(), 'image/png')
+
