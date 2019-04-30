@@ -15,5 +15,6 @@ urlpatterns = [
     url('^borrowing/(\d+)/$', views.borrowing, name='borrowing'),
     url('^history/$', views.history, name='history'),
     url('^modify/$', views.modify, name='modify'),
-    url('^active/(\d+)/$', views.active_account, name='active'),
+    url('^active/(.*?)/$', views.active_account, name='active'),
+    url('^ajax/$', views.ajax_load, name='ajax'),
 ]

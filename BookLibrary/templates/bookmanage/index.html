@@ -86,6 +86,39 @@
     {% empty %}
 
     {% endfor %}
+    {% csrf_token %}
+    <button class="get">GET请求</button>
+    <button class="post">POST请求</button>
+    <div class="ajax"></div>
+    <script>
+        $('.get').click(function () {
+            $.ajax({
+                url: '/bookmanage/ajax/',
+                type: 'get',
+                success:function (data) {
+                   $(".ajax").text(data);
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $('.post').click(function () {
+            $.ajax({
+                url: '/bookmanage/ajax/',
+                type: 'post',
+                data: {
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success:function (data) {
+                   $(".ajax").text(data);
+                }
+            })
+        })
+    </script>
+
+
+
 </div>
 
 

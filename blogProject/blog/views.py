@@ -3,10 +3,29 @@ from django.http import HttpResponse, HttpResponseRedirect
 # 邮件类库
 from django.core.mail import send_mail, send_mass_mail
 from PIL import Image, ImageDraw, ImageFont
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from django.conf import settings
 import random,io
 from .models import *
 
 # Create your views here.
+
+
+def serialize(request):
+    # 获取序列化工具
+    serutil = Serializer(settings.SECRET_KEY, 50)
+    # 将字典序列化，并编码
+    result = serutil.dumps({"name": '值'}).decode('utf-8')
+
+    # 获取反序列化工具
+    dserutil = Serializer(settings.SECRET_KEY, 50)
+    try:
+        obj = dserutil.loads(result)
+        name = obj['name']
+    except Exception:
+        pass
+
+
 
 
 def index(request):
@@ -24,6 +43,7 @@ def login_register(request):
     :param request:
     :return:
     """
+
     return render(request, 'blog/login.html')
 
 
@@ -71,6 +91,11 @@ def register(request):
     elif request.method == "POST":
         account = request.POST["account"]
         pwd = request.POST["password"]
+        verify_code = request.POST["verifycode"]
+        if verify_code != request.session["verifycode"]:
+            # 验证码错误
+            return HttpResponseRedirect('/blog/login')
+
         if User.objects.all().filter(account=account):
             return HttpResponseRedirect('/blog/register')
         else:
@@ -246,6 +271,6 @@ def verify(request):
     f = io.BytesIO()
     # 将图片保存
     im.save(f, 'png')
-    # 将图片的值发给前端页面
+    # 将图片的值发给前端页面进行渲染
     return HttpResponse(f.getvalue(), 'image/png')
 

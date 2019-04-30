@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 # 发送邮件
 from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from django.conf import settings
 from .forms import *
 import random
 from hashlib import md5
@@ -61,7 +63,11 @@ def register(request):
             try:
                 from django.conf import settings
                 # send_mail("用户注册", "<a href=''>注册<a/>", settings.DEFAULT_FROM_EMAIL, ["645933348@qq.com", ])
-                active_url = 'http://127.0.0.1:8000' + reverse('bookmanage:active', args=(account,))
+                # 获取序列化工具
+                serutil = Serializer(settings.SECRET_KEY, 50*60)
+                # 将字典序列化，并编码
+                result = serutil.dumps({"account": account}).decode('utf-8')
+                active_url = 'http://127.0.0.1:8000' + reverse('bookmanage:active', args=(result,))
                 msg = EmailMultiAlternatives("用户注册", "恭喜您注册成功，您的账号为%s,<a href=%s>点击我进行激活账号</a>"
                                              % (account, active_url), settings.DEFAULT_FROM_EMAIL, [email, ])
                 msg.content_subtype = "html"
@@ -183,6 +189,20 @@ def active_account(request, account):
     :param request:
     :return:
     """
-    user = User.objects.all().filter(account=account).first()
-    user.status = True
-    return HttpResponse('恭喜您激活成功')
+    # 获取反序列化工具
+    dserutil = Serializer(settings.SECRET_KEY, 50)
+    try:
+        obj = dserutil.loads(account)
+        account = obj['account']
+        user = User.objects.all().filter(account=account).first()
+        user.status = True
+        user.save()
+        return HttpResponse('恭喜您激活成功')
+    except Exception:
+        return HttpResponse('激活链接已过期')
+
+
+def ajax_load(request):
+    print('请求成功')
+    return HttpResponse('请求成功')
+
