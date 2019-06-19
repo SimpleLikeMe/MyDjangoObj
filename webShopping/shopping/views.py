@@ -35,3 +35,17 @@ def contact(request):
 
 def shop_grid(request):
     return render(request, 'shopping/shop-grid.html')
+
+
+def product_details(request):
+    return render(request, 'shopping/product-details.html')
+
+
+def about(request):
+    return render(request, 'shopping/about.html')
+
+
+def account(request):
+    return render(request, 'shopping/account.html')
+
+
