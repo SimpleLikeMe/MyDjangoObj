@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="index-2.html">
                                 <img src="/static/img/logo.jpg" alt="BACHAS">
                             </a>
                         </div>
@@ -27,12 +27,12 @@
                         <div class="mainmenu">
                             <nav>
                                 <ul id="nav">
-                                    <li class="current"><a href="index.html">HOME</a>
+                                    <li class="current"><a href="{% url 'shopping:home' 1 %}">HOME</a>
                                         <ul class="sub-menu">
                                             <li><a href="#" class="mega-title">Homepages</a></li>
-                                            <li><a href="index-2.html">Homepage Version 2</a></li>
-                                            <li><a href="index-3.html">Homepage Version 3</a></li>
-                                            <li><a href="index-4.html">Homepage Version 4</a></li>
+                                            <li><a href="{% url 'shopping:home' 2 %}">Homepage Version 2</a></li>
+                                            <li><a href="{% url 'shopping:home' 3 %}">Homepage Version 3</a></li>
+                                            <li><a href="{% url 'shopping:home' 4 %}">Homepage Version 4</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="shop-grid.html">Women</a>
@@ -99,8 +99,8 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="index.html">Pages</a>
+                                    <li><a href="{% url 'shopping:blog' %}">Blog</a></li>
+                                    <li><a href="index-2.html">Pages</a>
                                         <ul class="sub-menu">
                                             <li><a href="about.html">About Us</a></li>
                                             <li><a href="blog.html">Blog Page</a></li>
@@ -207,10 +207,10 @@
                             <div class="mobile-menu">
                                 <nav id="dropdown">
                                     <ul>
-                                        <li><a href="index.html">HOME</a>
+                                        <li><a href="index-2.html">HOME</a>
                                             <ul>
-                                                <li><a href="index-2.html">Home 2</a></li>
-                                                <li><a href="index-3.html">Home 3</a></li>
+                                                <li><a href="index-3.html">Home 2</a></li>
+                                                <li><a href="index-4.html">Home 3</a></li>
                                                 <li><a href="index-4.html">Home 4</a></li>
                                             </ul>
                                         </li>
@@ -247,7 +247,6 @@
         {% endblock %}
 
         {% block body %}
-
         {% endblock %}
 
         {% block brand-area %}
