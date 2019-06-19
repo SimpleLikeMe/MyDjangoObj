@@ -23,3 +23,15 @@ def home(request, page):
 
 def blog(request):
     return render(request, 'shopping/blog.html')
+
+
+def blog_details(request):
+    return render(request, 'shopping/blog-details.html')
+
+
+def contact(request):
+    return render(request, 'shopping/contact.html')
+
+
+def shop_grid(request):
+    return render(request, 'shopping/shop-grid.html')
