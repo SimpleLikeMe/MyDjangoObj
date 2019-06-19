@@ -13,6 +13,11 @@ urlpatterns = [
     url('^product_details/$', views.product_details, name='product_details'),
     url('^about/$', views.about, name='about'),
     url('^account/$', views.account, name='account'),
+    url('^wishlist/$', views.wishlist, name='wishlist'),
+    url('^shop_list/$', views.shop_list, name='shop_list'),
+    url('^cart/$', views.cart, name='cart'),
+    url('^checkout/$', views.checkout, name='checkout'),
+    url('^page404/$', views.page404, name='page404'),
 ]
 
 

@@ -184,13 +184,13 @@
                                             <li><a href="{% url 'shopping:blog' %}">Blog Page</a></li>
                                             <li><a href="{% url 'shopping:blog_details' %}">Blog Details Page</a></li>
                                             <li><a href="{% url 'shopping:account' %}">My Account</a></li>
-                                            <li><a href="cart.html">Cart Page</a></li>
-                                            <li><a href="checkout.html">Checkout Page</a></li>
+                                            <li><a href="{% url 'shopping:cart' %}">Cart Page</a></li>
+                                            <li><a href="{% url 'shopping:checkout' %}">Checkout Page</a></li>
                                             <li><a href="{% url 'shopping:product_details' %}">Product Details</a></li>
                                             <li><a href="{% url 'shopping:shop_grid' %}">Shop Grid</a></li>
-                                            <li><a href="shop-list.html">Shop List</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
+                                            <li><a href="{% url 'shopping:shop_list' %}">Shop List</a></li>
+                                            <li><a href="{% url 'shopping:wishlist' %}">Wishlist</a></li>
+                                            <li><a href="{% url 'shopping:page404' %}">404 Error</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="{% url 'shopping:contact' %}">Contact</a></li>

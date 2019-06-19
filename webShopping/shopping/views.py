@@ -49,3 +49,23 @@ def account(request):
     return render(request, 'shopping/account.html')
 
 
+def wishlist(request):
+    return render(request, 'shopping/wishlist.html')
+
+
+def shop_list(request):
+    return render(request, 'shopping/shop-list.html')
+
+
+def cart(request):
+    return render(request, 'shopping/cart.html')
+
+
+def checkout(request):
+    return render(request, 'shopping/checkout.html')
+
+
+def page404(request):
+    return render(request, 'shopping/404.html')
+
+
