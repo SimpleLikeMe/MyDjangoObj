@@ -33,7 +33,11 @@ def contact(request):
     return render(request, 'shopping/contact.html')
 
 
-def shop_grid(request):
+def women(request):
+    return render(request, 'shopping/shop-grid.html')
+
+
+def men(request):
     return render(request, 'shopping/shop-grid.html')
 
 

@@ -1,13 +1,14 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
-
-    {% block head-link %}
+    {% block title %}
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Home Two || Bachas</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+    {% block head-link %}
 
         <!-- favicon
         ============================================ -->
@@ -113,7 +114,7 @@
                                             <li><a href="{% url 'shopping:home' 4 %}">Homepage Version 4</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{% url 'shopping:shop_grid' %}">Women</a>
+                                    <li><a href="{% url 'shopping:women' %}">Women</a>
                                         <div class="megamenu">
                                             <div class="megamenu-list clearfix">
                                                 <span>
@@ -145,7 +146,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="{% url 'shopping:shop_grid' %}">Men</a>
+                                    <li><a href="{% url 'shopping:men' %}">Men</a>
                                         <div class="megamenu">
                                             <div class="megamenu-list clearfix">
                                                 <span>
@@ -187,7 +188,7 @@
                                             <li><a href="{% url 'shopping:cart' %}">Cart Page</a></li>
                                             <li><a href="{% url 'shopping:checkout' %}">Checkout Page</a></li>
                                             <li><a href="{% url 'shopping:product_details' %}">Product Details</a></li>
-                                            <li><a href="{% url 'shopping:shop_grid' %}">Shop Grid</a></li>
+                                            <li><a href="{% url 'shopping:women' %}">Shop Grid</a></li>
                                             <li><a href="{% url 'shopping:shop_list' %}">Shop List</a></li>
                                             <li><a href="{% url 'shopping:wishlist' %}">Wishlist</a></li>
                                             <li><a href="{% url 'shopping:page404' %}">404 Error</a></li>
@@ -294,7 +295,7 @@
                                         </li>
                                         <li><a href="#">SHOP</a>
                                             <ul>
-                                                <li><a href="{% url 'shopping:shop_grid' %}">Shop Grid</a></li>
+                                                <li><a href="{% url 'shopping:women' %}">Shop Grid</a></li>
                                                 <li><a href="{% url 'shopping:shop_list' %}">Shop List</a></li>
                                                 <li><a href="{% url 'shopping:product_details' %}">Product Details</a></li>
                                             </ul>
@@ -323,6 +324,7 @@
         </header>
         <!--End of Header Area-->
         {% endblock %}
+
 
         {% block body %}
         {% endblock %}
