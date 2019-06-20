@@ -28,10 +28,11 @@
     <!--Product Carousel Area Start-->
     <div class="product-carousel-area">
         <div class="product-carousel carousel-style-one">
+            {% for image in all_images %}
             <div class="single-product-item">
                 <div class="single-product">
                     <div class="item-top">
-                        <a href="#"><img src="/static/img/product/p-1.jpg" alt=""></a>
+                        <a href="#"><img src="/static/media/{{image.src}}" alt=""></a>
                         <div class="button-container">
                             <ul>
                                 <li><a href="{% url 'shopping:cart' %}"><i class="pe-7s-cart"></i></a></li>
@@ -42,140 +43,14 @@
                         </div>
                     </div>
                     <div class="item-bottom">
-                        <h5><a class="product-name" href="#">Faded Short Sleeves T-shirt</a></h5>
+                        <h5><a class="product-name" href="#">{{image.product.name}}</a></h5>
                         <div class="price-box">
-                            <span>£ 19.81</span>
+                            <span>$ {{image.product.price}}</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="single-product-item">
-                <div class="single-product">
-                    <div class="item-top">
-                        <a href="#"><img src="/static/img/product/p-2.jpg" alt=""></a>
-                        <div class="button-container">
-                            <ul>
-                                <li><a href="{% url 'shopping:cart' %}"><i class="pe-7s-cart"></i></a></li>
-                                <li><a href="{% url 'shopping:wishlist' %}"><i class="pe-7s-like"></i></a></li>
-                                <li><a href="#"><i class="pe-7s-copy-file"></i></a></li>
-                                <li><a class="modal-view" href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-search"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-bottom">
-                        <h5><a class="product-name" href="#">Blouse</a></h5>
-                        <div class="price-box">
-                            <span>£ 32.40</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-product-item">
-                <div class="single-product">
-                    <div class="item-top">
-                        <a href="#"><img src="/static/img/product/p-3.jpg" alt=""></a>
-                        <div class="button-container">
-                            <ul>
-                                <li><a href="{% url 'shopping:cart' %}"><i class="pe-7s-cart"></i></a></li>
-                                <li><a href="{% url 'shopping:wishlist' %}"><i class="pe-7s-like"></i></a></li>
-                                <li><a href="#"><i class="pe-7s-copy-file"></i></a></li>
-                                <li><a class="modal-view" href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-search"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-bottom">
-                        <h5><a class="product-name" href="#">Prited Dress</a></h5>
-                        <div class="price-box">
-                            <span>£ 31.20</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-product-item">
-                <div class="single-product">
-                    <div class="item-top">
-                        <a href="#"><img src="/static/img/product/p-4.jpg" alt=""></a>
-                        <div class="button-container">
-                            <ul>
-                                <li><a href="{% url 'shopping:cart' %}"><i class="pe-7s-cart"></i></a></li>
-                                <li><a href="{% url 'shopping:wishlist' %}"><i class="pe-7s-like"></i></a></li>
-                                <li><a href="#"><i class="pe-7s-copy-file"></i></a></li>
-                                <li><a class="modal-view" href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-search"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-bottom">
-                        <h5><a class="product-name" href="#">Prited Dress</a></h5>
-                        <div class="price-box">
-                            <span>£ 61.19</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-product-item">
-                <div class="single-product">
-                    <div class="item-top">
-                        <a href="#"><img src="/static/img/product/p-5.jpg" alt=""></a>
-                        <div class="button-container">
-                            <ul>
-                                <li><a href="{% url 'shopping:cart' %}"><i class="pe-7s-cart"></i></a></li>
-                                <li><a href="{% url 'shopping:wishlist' %}"><i class="pe-7s-like"></i></a></li>
-                                <li><a href="#"><i class="pe-7s-copy-file"></i></a></li>
-                                <li><a class="modal-view" href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-search"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-bottom">
-                        <h5><a class="product-name" href="#">Sunglass</a></h5>
-                        <div class="price-box">
-                            <span>£ 61.19</span>
-                            <span class="old-price">£ 36.61</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-product-item">
-                <div class="single-product">
-                    <div class="item-top">
-                        <a href="#"><img src="/static/img/product/p-6.jpg" alt=""></a>
-                        <div class="button-container">
-                            <ul>
-                                <li><a href="{% url 'shopping:cart' %}"><i class="pe-7s-cart"></i></a></li>
-                                <li><a href="{% url 'shopping:wishlist' %}"><i class="pe-7s-like"></i></a></li>
-                                <li><a href="#"><i class="pe-7s-copy-file"></i></a></li>
-                                <li><a class="modal-view" href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-search"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-bottom">
-                        <h5><a class="product-name" href="#">Exclusive Bag</a></h5>
-                        <div class="price-box">
-                            <span>£ 36.60</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-product-item">
-                <div class="single-product">
-                    <div class="item-top">
-                        <a href="#"><img src="/static/img/product/p-7.jpg" alt=""></a>
-                        <div class="button-container">
-                            <ul>
-                                <li><a href="{% url 'shopping:cart' %}"><i class="pe-7s-cart"></i></a></li>
-                                <li><a href="{% url 'shopping:wishlist' %}"><i class="pe-7s-like"></i></a></li>
-                                <li><a href="#"><i class="pe-7s-copy-file"></i></a></li>
-                                <li><a class="modal-view" href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-search"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="item-bottom">
-                        <h5><a class="product-name" href="#">Exclusive Bag</a></h5>
-                        <div class="price-box">
-                            <span>£ 90.20</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <!--End of Product Carousel Area-->

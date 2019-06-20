@@ -3,6 +3,7 @@ from .models import *
 # Register your models here.
 
 
+admin.site.register(ProductFeatured)
 admin.site.register(ProductKind)
 admin.site.register(ProductSize)
 admin.site.register(ProductColor)

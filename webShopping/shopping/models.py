@@ -3,6 +3,14 @@ from django.db import models
 # Create your models here.
 
 
+class ProductFeatured(models.Model):
+    name = models.CharField(max_length=20)
+    count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
+
 class ProductKind(models.Model):
     name = models.CharField(max_length=20)
     count = models.IntegerField(default=0)
@@ -67,6 +75,7 @@ class Product(models.Model):
     describe = models.TextField()
     publish_date = models.DateTimeField(auto_now_add=True)
     kind = models.ManyToManyField('ProductKind')
+    featured = models.ManyToManyField('ProductFeatured', null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -89,7 +98,7 @@ class Hat(Product):
 
 class HatImage(models.Model):
     name = models.CharField(max_length=20)
-    img = models.ImageField(upload_to='hat')
+    src = models.ImageField(upload_to='hat')
     product = models.ForeignKey('Hat', on_delete=models.CASCADE)
 
 
@@ -110,7 +119,7 @@ class Bag(Product):
 
 class BagImage(models.Model):
     name = models.CharField(max_length=20)
-    img = models.ImageField(upload_to='bag')
+    src = models.ImageField(upload_to='bag')
     product = models.ForeignKey('Bag', on_delete=models.CASCADE)
 
 
@@ -131,7 +140,7 @@ class Watch(Product):
 
 class WatchImage(models.Model):
     name = models.CharField(max_length=20)
-    img = models.ImageField(upload_to='watch')
+    src = models.ImageField(upload_to='watch')
     product = models.ForeignKey('Watch', on_delete=models.CASCADE)
 
 
@@ -152,7 +161,7 @@ class Glasses(Product):
 
 class GlassesImage(models.Model):
     name = models.CharField(max_length=20)
-    img = models.ImageField(upload_to='glasses')
+    src = models.ImageField(upload_to='glasses')
     product = models.ForeignKey('Glasses', on_delete=models.CASCADE)
 
 
@@ -173,7 +182,7 @@ class Shoe(Product):
 
 class ShoeImage(models.Model):
     name = models.CharField(max_length=20)
-    img = models.ImageField(upload_to='shoe')
+    src = models.ImageField(upload_to='shoe')
     product = models.ForeignKey('Shoe', on_delete=models.CASCADE)
 
 
