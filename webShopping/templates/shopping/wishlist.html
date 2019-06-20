@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb">
-                        <a title="Return to Home" href="index-2.html" class="home"><i class="fa fa-home"></i>Home</a>
+                        <a title="Return to Home" href="{% url 'shopping:home' 1 %}" class="home"><i class="fa fa-home"></i>Home</a>
                         <span class="navigation">&gt;</span>My Wishlist
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                                             <td class="product-name"><a href="#">Summer Hat</a></td>
                                             <td class="product-price"><span class="amount">£165.00</span></td>
                                             <td class="product-stock-status"><span class="wishlist-in-stock">In Stock</span></td>
-                                            <td class="product-add-to-cart"><a href="cart.html"> Add to Cart</a></td>
+                                            <td class="product-add-to-cart"><a href="{% url 'shopping:cart' %}"> Add to Cart</a></td>
                                         </tr>
                                         <tr>
                                             <td class="product-remove"><a href="#">×</a></td>
@@ -53,7 +53,7 @@
                                             <td class="product-name"><a href="#">Fashion Wears</a></td>
                                             <td class="product-price"><span class="amount">£50.00</span></td>
                                             <td class="product-stock-status"><span class="wishlist-in-stock">In Stock</span></td>
-                                            <td class="product-add-to-cart"><a href="cart.html"> Add to Cart</a></td>
+                                            <td class="product-add-to-cart"><a href="{% url 'shopping:cart' %}"> Add to Cart</a></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>

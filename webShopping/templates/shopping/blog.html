@@ -90,7 +90,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb">
-                        <a title="Return to Home" href="index-2.html" class="home"><i class="fa fa-home"></i>Home</a>
+                        <a title="Return to Home" href="{% url 'shopping:home' 1 %}" class="home"><i class="fa fa-home"></i>Home</a>
                         <span class="navigation">&gt;</span>All Blog News
                     </div>
                 </div>
@@ -130,14 +130,14 @@
                             </div>
                             <ul>
                                 <li>
-                                    <div class="post-thumb"><a href="blog-details.html"><img src="/static/img/blog/blog1.jpg" alt="" /></a></div>
-                                    <div class="post-info"><a href="blog-details.html">Blog image post</a><span>March 10, 2015</span></div></li>
+                                    <div class="post-thumb"><a href="{% url 'shopping:blog_details' %}"><img src="/static/img/blog/blog1.jpg" alt="" /></a></div>
+                                    <div class="post-info"><a href="{% url 'shopping:blog_details' %}">Blog image post</a><span>March 10, 2015</span></div></li>
                                 <li>
-                                    <div class="post-thumb"><a href="blog-details.html"><img src="/static/img/blog/blog12.jpg" alt="" /></a></div>
-                                    <div class="post-info"><a href="blog-details.html">Blog image post</a><span>March 10, 2015</span></div></li>
+                                    <div class="post-thumb"><a href="{% url 'shopping:blog_details' %}"><img src="/static/img/blog/blog12.jpg" alt="" /></a></div>
+                                    <div class="post-info"><a href="{% url 'shopping:blog_details' %}">Blog image post</a><span>March 10, 2015</span></div></li>
                                 <li>
-                                    <div class="post-thumb"><a href="blog-details.html"><img src="/static/img/blog/blog13.jpg" alt="" /></a></div>
-                                    <div class="post-info"><a href="blog-details.html">Blog image post</a><span>March 10, 2015</span></div>
+                                    <div class="post-thumb"><a href="{% url 'shopping:blog_details' %}"><img src="/static/img/blog/blog13.jpg" alt="" /></a></div>
+                                    <div class="post-info"><a href="{% url 'shopping:blog_details' %}">Blog image post</a><span>March 10, 2015</span></div>
                                 </li>
                             </ul>
                         </div>
@@ -199,7 +199,7 @@
                     </div>
                     <div class="single-blog fix">
                         <div class="post-thumbnail">
-                            <a href="blog-details.html"><img src="/static/img/blog/2.jpg" alt="" /></a>
+                            <a href="{% url 'shopping:blog_details' %}"><img src="/static/img/blog/2.jpg" alt="" /></a>
                         </div>
                         <div class="postinfo-wrapper">
                             <div class="post-date">
@@ -207,7 +207,7 @@
                             </div>
                             <div class="post-info">
                                 <h1 class="blog-post-title">
-                                    <a href="blog-details.html">Blog image post layout investigationes demonstraverunt</a>
+                                    <a href="{% url 'shopping:blog_details' %}">Blog image post layout investigationes demonstraverunt</a>
                                 </h1>
                                 <div class="entry-meta">
                                     Posted by <span class="author vcard"><a class="url fn n" href="#" title="View all posts by admin" rel="author">admin</a></span> / <a href="#" rel="category tag">Fashion</a>, <a href="#" rel="category tag">WordPress</a>
@@ -215,13 +215,13 @@
                                 <div class="entry-summary">
                                     <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor. Aliquam et metus pharetra, bibendum massa nec, fermentum odio. Nunc id leo ultrices, mollis ligula in, finibus tortor. Mauris eu dui ut lectus fermentum</p>
                                 </div>
-                                <a class="readmore" href="blog-details.html">read more</a>
+                                <a class="readmore" href="{% url 'shopping:blog_details' %}">read more</a>
                             </div>
                         </div>
                     </div>
                     <div class="single-blog fix">
                         <div class="post-thumbnail">
-                            <a href="blog-details.html"><img src="/static/img/blog/3.jpg" alt="" /></a>
+                            <a href="{% url 'shopping:blog_details' %}"><img src="/static/img/blog/3.jpg" alt="" /></a>
                         </div>
                         <div class="postinfo-wrapper">
                             <div class="post-date">
@@ -229,7 +229,7 @@
                             </div>
                             <div class="post-info">
                                 <h1 class="blog-post-title">
-                                    <a href="blog-details.html">Blog image post layout investigationes demonstraverunt</a>
+                                    <a href="{% url 'shopping:blog_details' %}">Blog image post layout investigationes demonstraverunt</a>
                                 </h1>
                                 <div class="entry-meta">
                                     Posted by <span class="author vcard"><a class="url fn n" href="#" title="View all posts by admin" rel="author">admin</a></span> / <a href="#" rel="category tag">Fashion</a>, <a href="#" rel="category tag">WordPress</a>
@@ -237,13 +237,13 @@
                                 <div class="entry-summary">
                                     <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, mollis ligula in, finibus tortor. Mauris eu dui ut lectus fermentum</p>
                                 </div>
-                                <a class="readmore" href="blog-details.html">read more</a>
+                                <a class="readmore" href="{% url 'shopping:blog_details' %}">read more</a>
                             </div>
                         </div>
                     </div>
                     <div class="single-blog fix">
                         <div class="post-thumbnail">
-                            <a href="blog-details.html"><img src="/static/img/blog/4.jpg" alt="" /></a>
+                            <a href="{% url 'shopping:blog_details' %}"><img src="/static/img/blog/4.jpg" alt="" /></a>
                         </div>
                         <div class="postinfo-wrapper">
                             <div class="post-date">
@@ -251,7 +251,7 @@
                             </div>
                             <div class="post-info">
                                 <h1 class="blog-post-title">
-                                    <a href="blog-details.html">Blog image post layout investigationes demonstraverunt</a>
+                                    <a href="{% url 'shopping:blog_details' %}">Blog image post layout investigationes demonstraverunt</a>
                                 </h1>
                                 <div class="entry-meta">
                                     Posted by <span class="author vcard"><a class="url fn n" href="#" title="View all posts by admin" rel="author">admin</a></span> / <a href="#" rel="category tag">Fashion</a>, <a href="#" rel="category tag">WordPress</a>
@@ -259,13 +259,13 @@
                                 <div class="entry-summary">
                                     <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio. Nunc id leo ultrices, mollis ligula in, finibus tortor. Mauris eu dui ut lectus fermentum</p>
                                 </div>
-                                <a class="readmore" href="blog-details.html">read more</a>
+                                <a class="readmore" href="{% url 'shopping:blog_details' %}">read more</a>
                             </div>
                         </div>
                     </div>
                     <div class="single-blog fix">
                         <div class="post-thumbnail">
-                            <a href="blog-details.html"><img src="/static/img/blog/1.jpg" alt="" /></a>
+                            <a href="{% url 'shopping:blog_details' %}"><img src="/static/img/blog/1.jpg" alt="" /></a>
                         </div>
                         <div class="postinfo-wrapper">
                             <div class="post-date">
@@ -273,7 +273,7 @@
                             </div>
                             <div class="post-info">
                                 <h1 class="blog-post-title">
-                                    <a href="blog-details.html">Blog image post layout investigationes demonstraverunt</a>
+                                    <a href="{% url 'shopping:blog_details' %}">Blog image post layout investigationes demonstraverunt</a>
                                 </h1>
                                 <div class="entry-meta">
                                     Posted by <span class="author vcard"><a class="url fn n" href="#" title="View all posts by admin" rel="author">admin</a></span> / <a href="#" rel="category tag">Fashion</a>, <a href="#" rel="category tag">WordPress</a>
@@ -281,7 +281,7 @@
                                 <div class="entry-summary">
                                     <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio. Nunc id leo ultrices, mollis ligula in, lectus fermentum</p>
                                 </div>
-                                <a class="readmore" href="blog-details.html">read more</a>
+                                <a class="readmore" href="{% url 'shopping:blog_details' %}">read more</a>
                             </div>
                         </div>
                     </div>
