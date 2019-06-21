@@ -15,6 +15,7 @@ urlpatterns = [
     url('^about/$', views.about, name='about'),
     url('^account/$', views.account, name='account'),
     url('^wishlist/$', views.wishlist, name='wishlist'),
+    url('^add_wishlist/(\d+)/$', views.add_wishlist, name='add_wishlist'),
     url('^shop_list/$', views.shop_list, name='shop_list'),
     url('^cart/$', views.cart, name='cart'),
     url('^checkout/$', views.checkout, name='checkout'),

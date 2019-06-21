@@ -76,6 +76,7 @@ class Product(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True)
     kind = models.ManyToManyField('ProductKind')
     featured = models.ManyToManyField('ProductFeatured', null=True, blank=True)
+    is_wishlist = models.BooleanField(default=False)
 
     class Meta:
         abstract = True
@@ -185,4 +186,8 @@ class ShoeImage(models.Model):
     src = models.ImageField(upload_to='shoe')
     product = models.ForeignKey('Shoe', on_delete=models.CASCADE)
 
+
+class Order(models.Model):
+    product = models.ForeignKey(Hat, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
 

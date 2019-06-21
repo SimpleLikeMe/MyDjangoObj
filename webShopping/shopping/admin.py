@@ -21,4 +21,5 @@ admin.site.register(Glasses)
 admin.site.register(GlassesImage)
 admin.site.register(Watch)
 admin.site.register(WatchImage)
+admin.site.register(Order)
 

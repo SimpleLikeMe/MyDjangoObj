@@ -117,7 +117,31 @@ def account(request):
 
 
 def wishlist(request):
-    return render(request, 'shopping/wishlist.html')
+    images = list()
+    hats = Hat.objects.filter(is_wishlist=True)
+    for hat in hats:
+        images.append(hat.hatimage_set.first())
+
+    glasses = Glasses.objects.filter(is_wishlist=True)
+    for glasse in glasses:
+        images.append(glasse.glassesimage_set.first())
+
+    bags = Bag.objects.filter(is_wishlist=True)
+    for bag in bags:
+        images.append(bag.bagimage_set.first())
+
+
+    return render(request, 'shopping/wishlist.html', context={'images': images})
+
+
+def add_wishlist(request, oid):
+    print(oid)
+    hat = Hat.objects.filter(pk=oid).first()
+    if hat:
+        # 将订单设为心爱订单
+        hat.is_wishlist = True
+        hat.save()
+    return redirect('/shopping/wishlist')
 
 
 def shop_list(request):
@@ -138,6 +162,17 @@ def shop_list(request):
 
 def cart(request):
     return render(request, 'shopping/cart.html')
+
+
+def add_cart(request, id):
+    hat = Hat.objects.filter(pk=id).first()
+    print(hat)
+    order = Order()
+    order.product = hat
+    order.quantity = 1
+    print(order)
+    order.save()
+    return redirect('/cart')
 
 
 def checkout(request):

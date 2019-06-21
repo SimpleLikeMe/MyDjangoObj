@@ -46,22 +46,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {% for image in images %}
                                         <tr>
                                             <td class="product-remove"><a href="#">×</a></td>
-                                            <td class="product-thumbnail"><a href="#"><img src="/static/img/cart3.jpg" alt="" /></a></td>
-                                            <td class="product-name"><a href="#">Summer Hat</a></td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-stock-status"><span class="wishlist-in-stock">In Stock</span></td>
+                                            <td class="product-thumbnail"><a href="#"><img src="/static/media/{{image.src}}" alt="" /></a></td>
+                                            <td class="product-name"><a href="#">{{image.product.name}}</a></td>
+                                            <td class="product-price"><span class="amount">$ {{image.product.price}}</span></td>
+                                            <td class="product-stock-status"><span class="wishlist-in-stock">{{image.product.availability}}</span></td>
                                             <td class="product-add-to-cart"><a href="{% url 'shopping:cart' %}"> Add to Cart</a></td>
                                         </tr>
-                                        <tr>
-                                            <td class="product-remove"><a href="#">×</a></td>
-                                            <td class="product-thumbnail"><a href="#"><img src="/static/img/cart4.jpg" alt="" /></a></td>
-                                            <td class="product-name"><a href="#">Fashion Wears</a></td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-stock-status"><span class="wishlist-in-stock">In Stock</span></td>
-                                            <td class="product-add-to-cart"><a href="{% url 'shopping:cart' %}"> Add to Cart</a></td>
-                                        </tr>
+                                        {% endfor %}
                                     </tbody>
                                     <tfoot>
                                         <tr>

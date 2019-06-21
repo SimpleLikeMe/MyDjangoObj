@@ -48,7 +48,7 @@
                                         <div class="button-container">
                                             <ul>
                                                 <li><a href="{% url 'shopping:cart' %}"><i class="pe-7s-cart"></i></a></li>
-                                                <li><a href="{% url 'shopping:wishlist' %}"><i class="pe-7s-like"></i></a></li>
+                                                <li><a href="{% url 'shopping:add_wishlist' image.product.id %}"><i class="pe-7s-like"></i></a></li>
                                                 <li><a href="#"><i class="pe-7s-copy-file"></i></a></li>
                                                 <li><a class="modal-view" href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-search"></i></a></li>
                                             </ul>
@@ -85,7 +85,7 @@
                                         <div class="button-container">
                                             <ul>
                                                 <li><a href="{% url 'shopping:cart' %}"><i class="pe-7s-cart"></i></a></li>
-                                                <li><a href="{% url 'shopping:wishlist' %}"><i class="pe-7s-like"></i></a></li>
+                                                <li><a href="{% url 'shopping:add_wishlist' image.product.id %}"><i class="pe-7s-like"></i></a></li>
                                                 <li><a href="#"><i class="pe-7s-copy-file"></i></a></li>
                                                 <li><a class="modal-view" href="#" data-toggle="modal" data-target="#productModal"><i class="pe-7s-search"></i></a></li>
                                             </ul>
@@ -113,6 +113,7 @@
                                 {% endfor %}
 
                             </div>
+
 
                         </div>
                     </div>
